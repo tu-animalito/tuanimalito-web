@@ -12,6 +12,7 @@
             --dark-bg: #0a0a2a;
             --card-bg: #161640;
             --neon-red: #ff3131;
+            --neon-green: #39ff14;
             --footer-bg: #050515;
         }
 
@@ -21,34 +22,44 @@
         header { text-align: center; padding: 20px; background: #000; border-bottom: 2px solid var(--primary-gold); }
         .logo-main { width: 100%; max-width: 280px; height: auto; }
 
-        /* ORÁCULO */
+        /* ORÁCULO DINÁMICO */
         .oraculo-box {
             background: linear-gradient(180deg, #b91c1c 0%, #1e3a8a 100%);
             border-radius: 15px; padding: 20px; text-align: center; border: 2px solid #fff; margin: 20px 0;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         .oraculo-flex { display: flex; justify-content: space-around; align-items: center; margin-top: 15px; }
-        .piramide-txt { font-family: 'Courier New', monospace; color: #1e3a8a; background: #fff; padding: 15px; border-radius: 10px; font-weight: bold; line-height: 1.1; }
+        .piramide-txt { font-family: 'Courier New', monospace; color: #1e3a8a; background: #fff; padding: 15px; border-radius: 10px; font-weight: bold; line-height: 1.1; font-size: 1.1rem; }
         
-        /* DIAMANTE */
         .diamante-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; }
         .circulo { width: 32px; height: 32px; background: #fff; color: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; border: 2px solid #333; font-size: 0.9rem; }
         .rojo { background: var(--neon-red); color: #fff; border-color: #fff; }
         .invisible { visibility: hidden; }
 
-        /* CARRUSEL INTERACTIVO */
+        .oraculo-item { background: #fff; padding: 8px; border-radius: 12px; width: 85px; color: #000; text-align: center; }
+        .oraculo-img { width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--neon-red); }
+
+        /* TELEGRAM VIP */
+        .btn-telegram { display: block; background: var(--neon-green); color: #000; text-align: center; padding: 15px; border-radius: 12px; font-family: 'Orbitron'; font-weight: bold; text-decoration: none; margin: 20px 0; box-shadow: 0 0 15px var(--neon-green); transition: 0.3s; }
+        .btn-telegram:hover { transform: scale(1.02); }
+
+        /* ANIMALITOS EXPLOSIVOS */
+        .explosivos-title { text-align: center; font-family: 'Orbitron'; color: var(--neon-red); margin-top: 30px; text-shadow: 0 0 10px rgba(255,49,49,0.5); }
+        .explosivos-container { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 20px; }
+        .exp-card { background: #000; border: 2px solid var(--neon-red); border-radius: 15px; padding: 10px; flex: 1; text-align: center; }
+        .exp-logo { width: 45px; height: 45px; border-radius: 50%; background: #fff; margin-bottom: 5px; }
+        .exp-num { font-size: 1.8rem; font-weight: bold; color: var(--neon-red); display: block; }
+
+        /* CARRUSEL INFINITO REAL */
         .slider-wrapper { 
-            background: #111133; /* Color acorde a la web */
-            padding: 15px 0; margin: 20px 0; border-top: 1px solid var(--primary-gold); border-bottom: 1px solid var(--primary-gold);
+            background: #111133; padding: 20px 0; margin: 20px 0; border-top: 1px solid var(--primary-gold); border-bottom: 1px solid var(--primary-gold);
+            overflow: hidden; position: relative;
         }
-        .slider { 
-            overflow-x: auto; display: flex; gap: 20px; padding: 10px;
-            scrollbar-width: none; cursor: grab; scroll-behavior: smooth;
-        }
-        .slider::-webkit-scrollbar { display: none; }
-        .slide { flex: 0 0 80px; text-align: center; transition: transform 0.3s; }
-        .slide:hover { transform: scale(1.1); }
-        .slide img { width: 70px; height: 70px; border-radius: 50%; border: 2px solid var(--primary-gold); background: #fff; }
+        .slider-track { display: flex; width: calc(100px * 24); animation: scroll 30s linear infinite; }
+        .slider-track:hover { animation-play-state: paused; }
+        .slide { width: 100px; flex-shrink: 0; text-align: center; }
+        .slide img { width: 75px; height: 75px; border-radius: 50%; border: 2px solid var(--primary-gold); background: #fff; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-100px * 12)); } }
 
         /* SECCIÓN DE ARTÍCULOS */
         .articulos-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 30px 0; }
@@ -72,18 +83,36 @@
 <div class="container">
     
     <div class="oraculo-box">
-        <div style="font-family: 'Orbitron';">ORÁCULO DE LA SUERTE</div>
-        <div id="fecha-actual" style="font-size: 0.9rem; margin-bottom: 10px;"></div>
+        <div style="font-family: 'Orbitron'; letter-spacing: 1px;">ORÁCULO DE LA SUERTE</div>
+        <div id="fecha-actual" style="font-weight: bold; margin-bottom: 10px;"></div>
         <div class="oraculo-flex">
             <div id="piramide-display" class="piramide-txt"></div>
             <div class="diamante-grid" id="diamante-display"></div>
         </div>
-        <div class="oraculo-grid" id="oraculo-fijos" style="display: flex; justify-content: center; gap: 10px; margin-top: 15px;"></div>
+        <div style="margin-top: 15px; font-weight: bold; font-size: 0.9rem;">PRONÓSTICOS DE HOY</div>
+        <div id="oraculo-fijos" style="display: flex; justify-content: center; gap: 10px; margin-top: 10px;"></div>
+    </div>
+
+    <a href="https://t.me/TU_CANAL_VIP" class="btn-telegram">🚀 ÚNETE AL CANAL TELEGRAM VIP</a>
+
+    <h2 class="explosivos-title">🔥 ANIMALITOS EXPLOSIVOS</h2>
+    <div class="explosivos-container">
+        <div class="exp-card">
+            <img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/lagranjita.webp" class="exp-logo">
+            <span class="exp-num" id="exp-granjita">--</span>
+        </div>
+        <div class="exp-card">
+            <img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/lottoactivo.webp" class="exp-logo">
+            <span class="exp-num" id="exp-lotto">--</span>
+        </div>
+        <div class="exp-card">
+            <img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/ruletaroyal.webp" class="exp-logo">
+            <span class="exp-num" id="exp-royal">--</span>
+        </div>
     </div>
 
     <div class="slider-wrapper">
-        <div class="slider" id="slider">
-            </div>
+        <div class="slider-track" id="slider-track"></div>
     </div>
 
     <h2 style="text-align:center; font-family:'Orbitron'; color:var(--primary-gold); font-size: 1.2rem;">GUÍAS Y DATOS</h2>
@@ -109,36 +138,50 @@
 
 <footer>
     <div class="footer-links">
-        <a href="/aviso-legal">Aviso Legal</a> | 
-        <a href="/contacto">Contacto</a> | 
-        <a href="/publicidad">Publicidad</a>
+        <a href="/aviso-legal">Aviso Legal</a> | <a href="/contacto">Contacto</a> | <a href="/publicidad">Publicidad</a>
     </div>
     <div class="copy">
         &copy; 2026 <b>TuAnimalito.com.ve</b><br>
-        Todos los derechos reservados. El uso de este sitio web implica la aceptación de nuestras políticas.
+        Todos los derechos reservados.
     </div>
 </footer>
 
 <script>
+    // --- CONFIGURACIÓN DE TUS ANIMALITOS EXPLOSIVOS (Cambia estos números aquí) ---
+    const misExplosivos = {
+        granjita: "25", // Ejemplo: Gallina
+        lotto: "05",    // Ejemplo: León
+        royal: "12"     // Ejemplo: Caballo
+    };
+    // -----------------------------------------------------------------------------
+
     const urlRepo = "https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/";
     const animales = {"0":"Delfín","00":"Ballena","1":"Carnero","2":"Toro","3":"Ciempiés","4":"Alacrán","5":"León","6":"Rana","7":"Perico","8":"Ratón","9":"Águila","10":"Tigre","11":"Gato","12":"Caballo","13":"Mono","14":"Paloma","15":"Zorro","16":"Oso","17":"Pavo","18":"Burro","19":"Chivo","20":"Cochino","21":"Gallo","22":"Camello","23":"Cebra","24":"Iguana","25":"Gallina","26":"Vaca","27":"Perro","28":"Zamuro","29":"Elefante","30":"Caimán","31":"Lapa","32":"Ardilla","33":"Pescado","34":"Venado","35":"Pájaro","36":"Culebra"};
 
+    function ajustar36(n) {
+        let res = parseInt(n);
+        while (res > 36) res -= 36;
+        return String(res).padStart(2, '0');
+    }
+
     function init() {
         const hoy = new Date();
-        const fechaStr = `${String(hoy.getDate()).padStart(2,'0')}${String(hoy.getMonth()+1).padStart(2,'0')}${hoy.getFullYear()}`;
+        const d = String(hoy.getDate()).padStart(2, '0');
+        const m = String(hoy.getMonth() + 1).padStart(2, '0');
+        const a = String(hoy.getFullYear());
+        const fechaStr = d + m + a;
         document.getElementById('fecha-actual').innerText = hoy.toLocaleDateString();
 
-        // Pirámide
+        // 1. Pirámide Automática
         let pir = [fechaStr];
         while(pir[pir.length-1].length > 1) {
-            let n = "";
-            let ult = pir[pir.length-1];
+            let n = "", ult = pir[pir.length-1];
             for(let i=0; i<ult.length-1; i++) n += (parseInt(ult[i])+parseInt(ult[i+1])) % 10;
             pir.push(n);
         }
         document.getElementById('piramide-display').innerHTML = pir.join('<br>');
 
-        // Diamante
+        // 2. Diamante Automático
         const p1 = pir[pir.length-2], p2 = pir[pir.length-1];
         const c = parseInt(p2);
         const dNums = [null, p1, null, c+4, c, c-2, c+2, c-2, 0];
@@ -147,7 +190,24 @@
             return `<div class="circulo ${i===4?'rojo':''}">${Math.abs(n%10)}</div>`;
         }).join('');
 
-        // Carrusel
+        // 3. Pronósticos Oráculo (Basados en pirámide)
+        const fijos = [ajustar36(c + 1), ajustar36(c + 3), ajustar36(c + 5)];
+        const fijosContainer = document.getElementById('oraculo-fijos');
+        fijos.forEach(num => {
+            fijosContainer.innerHTML += `
+                <div class="oraculo-item">
+                    <img src="${urlRepo}${num}.png" class="oraculo-img">
+                    <div style="font-weight:bold">${num}</div>
+                    <div style="font-size:0.6rem; text-transform:uppercase">${animales[num]}</div>
+                </div>`;
+        });
+
+        // 4. Asignar tus Animalitos Explosivos manuales
+        document.getElementById('exp-granjita').innerText = misExplosivos.granjita;
+        document.getElementById('exp-lotto').innerText = misExplosivos.lotto;
+        document.getElementById('exp-royal').innerText = misExplosivos.royal;
+
+        // 5. Carrusel Infinito
         const logos = [
             {img: "lottoactivo.webp", link: "/lotto-activo"},
             {img: "lagranjita.webp", link: "/la-granjita"},
@@ -156,32 +216,9 @@
             {img: "guacharo.webp", link: "/guacharo"},
             {img: "ruletaactiva.webp", link: "/ruleta-activa"}
         ];
-        const slider = document.getElementById('slider');
+        const track = document.getElementById('slider-track');
         [...logos, ...logos].forEach(l => {
-            slider.innerHTML += `<a href="${l.link}" class="slide"><img src="${urlRepo}${l.img}"></a>`;
-        });
-
-        // Auto-scroll que permite control manual
-        let isDown = false;
-        let startX, scrollLeft;
-        let autoScroll = setInterval(() => { slider.scrollLeft += 1; }, 30);
-
-        slider.addEventListener('mousedown', (e) => {
-            isDown = true; clearInterval(autoScroll);
-            startX = e.pageX - slider.offsetLeft;
-            scrollLeft = slider.scrollLeft;
-        });
-        slider.addEventListener('mouseleave', () => { isDown = false; });
-        slider.addEventListener('mouseup', () => { 
-            isDown = false; 
-            autoScroll = setInterval(() => { slider.scrollLeft += 1; }, 30);
-        });
-        slider.addEventListener('mousemove', (e) => {
-            if(!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - slider.offsetLeft;
-            const walk = (x - startX) * 2;
-            slider.scrollLeft = scrollLeft - walk;
+            track.innerHTML += `<div class="slide"><a href="${l.link}"><img src="${urlRepo}${l.img}"></a></div>`;
         });
     }
 
@@ -189,4 +226,3 @@
 </script>
 </body>
 </html>
-
