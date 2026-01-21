@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Animalito | Datos y Pronósticos VIP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-gold: #ffcc00;
+            --dark-bg: #0d1117;
+            --card-bg: #161b22;
+            --accent-blue: #58a6ff;
+            --explosive-red: #ff4d4d;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--dark-bg);
+            color: #c9d1d9;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #000 0%, #161b22 100%);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--primary-gold);
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary-gold);
+            margin: 0;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+        }
+
+        .container { max-width: 800px; margin: auto; padding: 20px; }
+
+        /* SECCIÓN PRONÓSTICOS (CLICK PARA REVELAR) */
+        .section-title {
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 25px;
+            color: var(--accent-blue);
+        }
+
+        .loterias-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        details {
+            background: var(--card-bg);
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        summary {
+            padding: 20px;
+            list-style: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        summary:hover { background: #21262d; }
+
+        .loteria-header { display: flex; align-items: center; gap: 15px; }
+        .loteria-header img { width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--primary-gold); }
+
+        .reveal-content {
+            padding: 20px;
+            background: #000;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            border-top: 1px solid var(--primary-gold);
+            text-align: center;
+        }
+
+        .animal-item {
+            background: #1c2128;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px dashed var(--primary-gold);
+        }
+
+        .animal-item span { display: block; font-size: 0.8rem; color: var(--primary-gold); }
+        .animal-item strong { font-size: 1.1rem; color: #fff; }
+
+        /* EXPLOSIVOS */
+        .explosivos-wrap {
+            background: linear-gradient(45deg, #800000, #330000);
+            margin-top: 40px;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid var(--explosive-red);
+        }
+
+        .explosivos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .bomb-card {
+            background: rgba(0,0,0,0.5);
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* PIRÁMIDE */
+        .piramide-section {
+            margin-top: 40px;
+            text-align: center;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .piramide-container {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            line-height: 1.2;
+            color: var(--primary-gold);
+            margin: 20px 0;
+            letter-spacing: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+            color: #8b949e;
+        }
+
+        /* Responsive para teléfonos */
+        @media (max-width: 600px) {
+            .reveal-content { grid-template-columns: repeat(2, 1fr); }
+            .explosivos-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>TU ANIMALITO 🐾</h1>
+    <p>Resultados y Pronósticos de Alta Precisión</p>
+</header>
+
+<div class="container">
+    
+    <h2 class="section-title">📊 PRONÓSTICOS DE HOY</h2>
+    
+    <div class="loterias-grid">
+        <details>
+            <summary>
+                <div class="loteria-header">
+                    <img src="https://via.placeholder.com/50" alt="Lotto">
+                    <span>Lotto Activo</span>
+                </div>
+                <span>▼</span>
+            </summary>
+            <div class="reveal-content">
+                <div class="animal-item"><span>05</span><strong>LEÓN</strong></div>
+                <div class="animal-item"><span>33</span><strong>PESCADO</strong></div>
+                <div class="animal-item"><span>12</span><strong>CABALLO</strong></div>
+                <div class="animal-item"><span>00</span><strong>BALLENA</strong></div>
+                <div class="animal-item"><span>19</span><strong>CHIVO</strong></div>
+                <div class="animal-item"><span>24</span><strong>IGUANA</strong></div>
+            </div>
+        </details>
+
+        <details>
+            <summary>
+                <div class="loteria-header">
+                    <img src="https://via.placeholder.com/50" alt="Granjita">
+                    <span>La Granjita</span>
+                </div>
+                <span>▼</span>
+            </summary>
+            <div class="reveal-content">
+                <div class="animal-item"><span>01</span><strong>CARNERO</strong></div>
+                <div class="animal-item"><span>14</span><strong>PALOMA</strong></div>
+                </div>
+        </details>
+    </div>
+
+    <div class="explosivos-wrap">
+        <h2 style="margin:0; color: #fff;">🔥 ANIMALITOS EXPLOSIVOS 🔥</h2>
+        <div class="explosivos-grid">
+            <div class="bomb-card">🦁 05</div>
+            <div class="bomb-card">🐬 00</div>
+            <div class="bomb-card">🦅 09</div>
+        </div>
+    </div>
+
+    <div class="piramide-section">
+        <h2 class="section-title" style="color: var(--primary-gold);">🔺 PIRÁMIDE DEL DÍA</h2>
+        <div class="piramide-container">
+            21012026<br>
+            3113228<br>
+            424540<br>
+            66994<br>
+            2583<br>
+            731<br>
+            04<br>
+            4
+        </div>
+        <p>Sigue la secuencia numérica para tus jugadas de azar.</p>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 TuAnimalito.com.ve | Analítica de Datos Hípicos</p>
+    <p>Diseñado para GitHub Pages</p>
+</footer>
+
+</body>
+                                                                        </html>
+                                                                        
