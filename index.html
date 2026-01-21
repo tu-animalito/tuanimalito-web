@@ -3,11 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datos de Animalitos HOY | Oráculo de la Suerte y Apuestas Royal</title>
-    
-    <meta name="description" content="Pronósticos de animalitos: Lotto Activo, La Granjita, Ruleta Royal y Lotto Rey. Consulta el Oráculo de la Suerte hoy.">
-    <meta name="keywords" content="datos de animalitos, datos de Lotto Activo, datos de la GRANJITA, datos Lotto Rey, datos ruleta royal, oráculo de la suerte">
-
+    <title>Tu Animalito | Oráculo y Pronósticos de Hoy</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     
     <style>
@@ -15,156 +11,178 @@
             --primary-gold: #ffcc00;
             --dark-bg: #0a0a2a;
             --card-bg: #161640;
-            --neon-green: #39ff14;
             --neon-red: #ff3131;
+            --footer-bg: #050515;
         }
 
         body { margin: 0; font-family: 'Roboto', sans-serif; background-color: var(--dark-bg); color: #e6edf3; overflow-x: hidden; }
         .container { max-width: 600px; margin: auto; padding: 15px; }
 
-        /* HEADER CON LOGO APUESTAS ROYAL */
         header { text-align: center; padding: 20px; background: #000; border-bottom: 2px solid var(--primary-gold); }
-        .logo-main { width: 200px; height: auto; }
+        .logo-main { width: 100%; max-width: 280px; height: auto; }
 
-        /* ORÁCULO DE LA SUERTE - ESTILO IMAGEN */
+        /* ORÁCULO */
         .oraculo-box {
             background: linear-gradient(180deg, #b91c1c 0%, #1e3a8a 100%);
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-            border: 2px solid #fff;
-            margin: 20px 0;
+            border-radius: 15px; padding: 20px; text-align: center; border: 2px solid #fff; margin: 20px 0;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-
-        .oraculo-header { font-family: 'Orbitron'; color: #fff; font-size: 1.4rem; letter-spacing: 1px; }
+        .oraculo-flex { display: flex; justify-content: space-around; align-items: center; margin-top: 15px; }
+        .piramide-txt { font-family: 'Courier New', monospace; color: #1e3a8a; background: #fff; padding: 15px; border-radius: 10px; font-weight: bold; line-height: 1.1; }
         
-        .piramide-txt {
-            font-family: 'Courier New', monospace;
-            color: #1e3a8a; /* Azul oscuro sobre blanco para resaltar como en la foto */
-            background: rgba(255,255,255,0.9);
-            display: inline-block;
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            line-height: 1.2;
-            margin: 15px 0;
-            font-weight: bold;
+        /* DIAMANTE */
+        .diamante-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; }
+        .circulo { width: 32px; height: 32px; background: #fff; color: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; border: 2px solid #333; font-size: 0.9rem; }
+        .rojo { background: var(--neon-red); color: #fff; border-color: #fff; }
+        .invisible { visibility: hidden; }
+
+        /* CARRUSEL INTERACTIVO */
+        .slider-wrapper { 
+            background: #111133; /* Color acorde a la web */
+            padding: 15px 0; margin: 20px 0; border-top: 1px solid var(--primary-gold); border-bottom: 1px solid var(--primary-gold);
         }
+        .slider { 
+            overflow-x: auto; display: flex; gap: 20px; padding: 10px;
+            scrollbar-width: none; cursor: grab; scroll-behavior: smooth;
+        }
+        .slider::-webkit-scrollbar { display: none; }
+        .slide { flex: 0 0 80px; text-align: center; transition: transform 0.3s; }
+        .slide:hover { transform: scale(1.1); }
+        .slide img { width: 70px; height: 70px; border-radius: 50%; border: 2px solid var(--primary-gold); background: #fff; }
 
-        .oraculo-grid { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
-        .oraculo-item { background: #fff; padding: 10px; border-radius: 15px; width: 30%; border: 3px solid #ddd; }
-        .oraculo-img { width: 60px; height: 60px; border-radius: 50%; border: 3px solid var(--neon-red); }
-        .oraculo-num { display: block; color: var(--neon-red); font-weight: bold; font-size: 1.2rem; }
-        .oraculo-name { font-size: 0.7rem; color: #333; font-weight: bold; text-transform: uppercase; }
+        /* SECCIÓN DE ARTÍCULOS */
+        .articulos-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 30px 0; }
+        .art-card { background: var(--card-bg); border-radius: 10px; padding: 15px; text-align: center; border: 1px solid rgba(255,204,0,0.2); text-decoration: none; color: inherit; }
+        .art-card img { width: 60px; height: 60px; border-radius: 50%; margin-bottom: 10px; background: #fff; }
+        .art-card h3 { font-size: 0.9rem; margin: 0; color: var(--primary-gold); font-family: 'Orbitron'; }
 
-        /* CARRUSEL DE LOGOS */
-        .slider { width: 100%; height: 90px; margin: 20px 0; overflow: hidden; background: #fff; display: flex; align-items: center; }
-        .slide-track { display: flex; width: calc(100px * 18); animation: scroll 20s linear infinite; }
-        .slide { width: 100px; display: flex; justify-content: center; }
-        .slide img { width: 65px; height: 65px; border-radius: 50%; border: 1px solid #ccc; }
-
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-100px * 9)); } }
-
-        /* SECCIONES DE PRONÓSTICOS */
-        .section-title { text-align: center; font-family: 'Orbitron'; color: var(--primary-gold); }
-        details { background: var(--card-bg); border-radius: 10px; margin-bottom: 8px; border: 1px solid rgba(255,255,255,0.1); }
-        summary { padding: 15px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; }
-        .lot-head { display: flex; align-items: center; gap: 10px; }
-        .lot-head img { width: 40px; height: 40px; border-radius: 50%; background: #fff; }
-        .reveal-content { padding: 15px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; background: #050515; }
-        .animal-card { background: #1c2128; padding: 10px; border-radius: 10px; text-align: center; border: 1px solid var(--primary-gold); }
-
-        .btn-telegram { display: block; background: var(--neon-green); color: #000; text-align: center; padding: 15px; border-radius: 10px; font-family: 'Orbitron'; font-weight: bold; text-decoration: none; margin: 20px 0; }
+        /* FOOTER */
+        footer { background: var(--footer-bg); padding: 30px 15px; text-align: center; border-top: 2px solid var(--primary-gold); font-size: 0.8rem; }
+        .footer-links { margin-bottom: 15px; }
+        .footer-links a { color: var(--primary-gold); text-decoration: none; margin: 0 10px; }
+        .copy { opacity: 0.7; }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/logo_apuestas_royal.png" alt="Apuestas Royal" class="logo-main">
+    <img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/tu-animalito.jpg" alt="Tu Animalito" class="logo-main">
 </header>
 
 <div class="container">
     
     <div class="oraculo-box">
-        <div class="oraculo-header">ORÁCULO DE LA SUERTE</div>
-        <div style="color: #fff; font-weight: bold; margin-top: 5px;">21/01/2026</div>
-        
-        <div id="piramide-display" class="piramide-txt"></div>
-
-        <div style="color: #fff; font-weight: bold; margin-top: 10px; font-size: 0.9rem;">ORÁCULO DE HOY</div>
-        <div class="oraculo-grid" id="oraculo-fijos"></div>
+        <div style="font-family: 'Orbitron';">ORÁCULO DE LA SUERTE</div>
+        <div id="fecha-actual" style="font-size: 0.9rem; margin-bottom: 10px;"></div>
+        <div class="oraculo-flex">
+            <div id="piramide-display" class="piramide-txt"></div>
+            <div class="diamante-grid" id="diamante-display"></div>
+        </div>
+        <div class="oraculo-grid" id="oraculo-fijos" style="display: flex; justify-content: center; gap: 10px; margin-top: 15px;"></div>
     </div>
 
-    <a href="https://t.me/TU_CANAL" class="btn-telegram">🚀 ÚNETE AL TELEGRAM VIP</a>
-
-    <div class="slider">
-        <div class="slide-track" id="carrusel-track"></div>
+    <div class="slider-wrapper">
+        <div class="slider" id="slider">
+            </div>
     </div>
 
-    <h2 class="section-title">📊 PRONÓSTICOS DEL DÍA</h2>
-    <div id="loterias-container"></div>
+    <h2 style="text-align:center; font-family:'Orbitron'; color:var(--primary-gold); font-size: 1.2rem;">GUÍAS Y DATOS</h2>
+    <div class="articulos-grid">
+        <a href="/datos-lotto-activo" class="art-card">
+            <img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/lottoactivo.webp">
+            <h3>Datos Lotto Activo</h3>
+        </a>
+        <a href="/datos-la-granjita" class="art-card">
+            <img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/lagranjita.webp">
+            <h3>Datos La Granjita</h3>
+        </a>
+        <a href="/datos-ruleta-royal" class="art-card">
+            <img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/ruletaroyal.webp">
+            <h3>Datos Ruleta Royal</h3>
+        </a>
+        <a href="/datos-lotto-rey" class="art-card">
+            <img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/lottorey.webp">
+            <h3>Datos Lotto Rey</h3>
+        </a>
+    </div>
 </div>
+
+<footer>
+    <div class="footer-links">
+        <a href="/aviso-legal">Aviso Legal</a> | 
+        <a href="/contacto">Contacto</a> | 
+        <a href="/publicidad">Publicidad</a>
+    </div>
+    <div class="copy">
+        &copy; 2026 <b>TuAnimalito.com.ve</b><br>
+        Todos los derechos reservados. El uso de este sitio web implica la aceptación de nuestras políticas.
+    </div>
+</footer>
 
 <script>
     const urlRepo = "https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/";
     const animales = {"0":"Delfín","00":"Ballena","1":"Carnero","2":"Toro","3":"Ciempiés","4":"Alacrán","5":"León","6":"Rana","7":"Perico","8":"Ratón","9":"Águila","10":"Tigre","11":"Gato","12":"Caballo","13":"Mono","14":"Paloma","15":"Zorro","16":"Oso","17":"Pavo","18":"Burro","19":"Chivo","20":"Cochino","21":"Gallo","22":"Camello","23":"Cebra","24":"Iguana","25":"Gallina","26":"Vaca","27":"Perro","28":"Zamuro","29":"Elefante","30":"Caimán","31":"Lapa","32":"Ardilla","33":"Pescado","34":"Venado","35":"Pájaro","36":"Culebra"};
 
-    // Configuración dinámica
-    const dia = "21", mes = "01", ano = "2026";
-    const fijos = ["05", "07", "05"]; 
-    const logos = ["guacharo.webp", "ruletaactiva.webp", "junglamillonaria.webp", "lottoactivo.webp", "lagranjita.webp", "ruletaroyal.webp", "lottorey.webp", "chanceanimalito.webp"];
-
-    const pronosticos = [
-        { n: "Lotto Activo", img: "lottoactivo.webp", d: ["05", "18", "12", "00"] },
-        { n: "La Granjita", img: "lagranjita.webp", d: ["14", "01", "33", "24"] },
-        { n: "Ruleta Royal", img: "ruletaroyal.webp", d: ["07", "21", "36", "10"] },
-        { n: "Lotto Rey", img: "lottorey.webp", d: ["09", "11", "25", "32"] }
-    ];
-
     function init() {
+        const hoy = new Date();
+        const fechaStr = `${String(hoy.getDate()).padStart(2,'0')}${String(hoy.getMonth()+1).padStart(2,'0')}${hoy.getFullYear()}`;
+        document.getElementById('fecha-actual').innerText = hoy.toLocaleDateString();
+
         // Pirámide
-        document.getElementById('piramide-display').innerHTML = generarPir(dia+mes+ano);
-        
-        // Fijos Oráculo
-        fijos.forEach(num => {
-            document.getElementById('oraculo-fijos').innerHTML += `
-                <div class="oraculo-item">
-                    <img src="${urlRepo}${num}.png" class="oraculo-img">
-                    <span class="oraculo-num">${num}</span>
-                    <span class="oraculo-name">${animales[num]}</span>
-                </div>`;
-        });
+        let pir = [fechaStr];
+        while(pir[pir.length-1].length > 1) {
+            let n = "";
+            let ult = pir[pir.length-1];
+            for(let i=0; i<ult.length-1; i++) n += (parseInt(ult[i])+parseInt(ult[i+1])) % 10;
+            pir.push(n);
+        }
+        document.getElementById('piramide-display').innerHTML = pir.join('<br>');
+
+        // Diamante
+        const p1 = pir[pir.length-2], p2 = pir[pir.length-1];
+        const c = parseInt(p2);
+        const dNums = [null, p1, null, c+4, c, c-2, c+2, c-2, 0];
+        document.getElementById('diamante-display').innerHTML = dNums.map((n, i) => {
+            if (n === null) return '<div class="invisible"></div>';
+            return `<div class="circulo ${i===4?'rojo':''}">${Math.abs(n%10)}</div>`;
+        }).join('');
 
         // Carrusel
-        const track = document.getElementById('carrusel-track');
+        const logos = [
+            {img: "lottoactivo.webp", link: "/lotto-activo"},
+            {img: "lagranjita.webp", link: "/la-granjita"},
+            {img: "ruletaroyal.webp", link: "/ruleta-royal"},
+            {img: "lottorey.webp", link: "/lotto-rey"},
+            {img: "guacharo.webp", link: "/guacharo"},
+            {img: "ruletaactiva.webp", link: "/ruleta-activa"}
+        ];
+        const slider = document.getElementById('slider');
         [...logos, ...logos].forEach(l => {
-            track.innerHTML += `<div class="slide"><img src="${urlRepo}${l}"></div>`;
+            slider.innerHTML += `<a href="${l.link}" class="slide"><img src="${urlRepo}${l.img}"></a>`;
         });
 
-        // Loterías
-        const container = document.getElementById('loterias-container');
-        pronosticos.forEach(p => {
-            let cards = "";
-            p.d.forEach(num => {
-                cards += `<div class="animal-card"><img src="${urlRepo}${num}.png" width="50"><br><b>${num}</b><br><small>${animales[num]}</small></div>`;
-            });
-            container.innerHTML += `
-                <details>
-                    <summary><div class="lot-head"><img src="${urlRepo}${p.img}"><span>${p.n}</span></div><b>VER</b></summary>
-                    <div class="reveal-content">${cards}</div>
-                </details>`;
-        });
-    }
+        // Auto-scroll que permite control manual
+        let isDown = false;
+        let startX, scrollLeft;
+        let autoScroll = setInterval(() => { slider.scrollLeft += 1; }, 30);
 
-    function generarPir(c) {
-        let h = c + "<br>", a = c;
-        while (a.length > 1) {
-            let n = "";
-            for (let i = 0; i < a.length - 1; i++) n += (parseInt(a[i]) + parseInt(a[i+1])) % 10;
-            h += n + "<br>"; a = n;
-        }
-        return h;
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true; clearInterval(autoScroll);
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+        slider.addEventListener('mouseleave', () => { isDown = false; });
+        slider.addEventListener('mouseup', () => { 
+            isDown = false; 
+            autoScroll = setInterval(() => { slider.scrollLeft += 1; }, 30);
+        });
+        slider.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2;
+            slider.scrollLeft = scrollLeft - walk;
+        });
     }
 
     window.onload = init;
@@ -172,5 +190,3 @@
 </body>
 </html>
 
-                                                                        </html>
-                                                                        
