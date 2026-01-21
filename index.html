@@ -3,106 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tu Animalito | Datos y Pronósticos VIP</title>
+    <title>Datos de Animalitos HOY | Oráculo de la Suerte y Apuestas Royal</title>
+    
+    <meta name="description" content="Pronósticos de animalitos: Lotto Activo, La Granjita, Ruleta Royal y Lotto Rey. Consulta el Oráculo de la Suerte hoy.">
+    <meta name="keywords" content="datos de animalitos, datos de Lotto Activo, datos de la GRANJITA, datos Lotto Rey, datos ruleta royal, oráculo de la suerte">
+
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --primary-gold: #ffcc00;
-            --dark-bg: #0d1117;
-            --card-bg: #161b22;
-            --accent-blue: #58a6ff;
-            --explosive-red: #ff4d4d;
+            --dark-bg: #0a0a2a;
+            --card-bg: #161640;
+            --neon-green: #39ff14;
+            --neon-red: #ff3131;
         }
 
-        body {
-            margin: 0;
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--dark-bg);
-            color: #c9d1d9;
-            line-height: 1.6;
-        }
+        body { margin: 0; font-family: 'Roboto', sans-serif; background-color: var(--dark-bg); color: #e6edf3; overflow-x: hidden; }
+        .container { max-width: 600px; margin: auto; padding: 15px; }
 
-        header {
-            background: linear-gradient(135deg, #000 0%, #161b22 100%);
-            padding: 40px 20px;
-            text-align: center;
-            border-bottom: 3px solid var(--primary-gold);
-        }
+        /* HEADER CON LOGO APUESTAS ROYAL */
+        header { text-align: center; padding: 20px; background: #000; border-bottom: 2px solid var(--primary-gold); }
+        .logo-main { width: 200px; height: auto; }
 
-        h1 {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--primary-gold);
-            margin: 0;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
-        }
-
-        .container { max-width: 800px; margin: auto; padding: 20px; }
-
-        /* SECCIÓN PRONÓSTICOS (CLICK PARA REVELAR) */
-        .section-title {
-            text-align: center;
-            font-family: 'Orbitron', sans-serif;
-            margin-bottom: 25px;
-            color: var(--accent-blue);
-        }
-
-        .loterias-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-        }
-
-        details {
-            background: var(--card-bg);
-            border: 1px solid #30363d;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: 0.3s;
-        }
-
-        summary {
+        /* ORÁCULO DE LA SUERTE - ESTILO IMAGEN */
+        .oraculo-box {
+            background: linear-gradient(180deg, #b91c1c 0%, #1e3a8a 100%);
+            border-radius: 15px;
             padding: 20px;
-            list-style: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            text-align: center;
+            border: 2px solid #fff;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .oraculo-header { font-family: 'Orbitron'; color: #fff; font-size: 1.4rem; letter-spacing: 1px; }
+        
+        .piramide-txt {
+            font-family: 'Courier New', monospace;
+            color: #1e3a8a; /* Azul oscuro sobre blanco para resaltar como en la foto */
+            background: rgba(255,255,255,0.9);
+            display: inline-block;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            line-height: 1.2;
+            margin: 15px 0;
             font-weight: bold;
-            font-size: 1.2rem;
         }
 
-        summary:hover { background: #21262d; }
+        .oraculo-grid { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+        .oraculo-item { background: #fff; padding: 10px; border-radius: 15px; width: 30%; border: 3px solid #ddd; }
+        .oraculo-img { width: 60px; height: 60px; border-radius: 50%; border: 3px solid var(--neon-red); }
+        .oraculo-num { display: block; color: var(--neon-red); font-weight: bold; font-size: 1.2rem; }
+        .oraculo-name { font-size: 0.7rem; color: #333; font-weight: bold; text-transform: uppercase; }
 
-        .loteria-header { display: flex; align-items: center; gap: 15px; }
-        .loteria-header img { width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--primary-gold); }
+        /* CARRUSEL DE LOGOS */
+        .slider { width: 100%; height: 90px; margin: 20px 0; overflow: hidden; background: #fff; display: flex; align-items: center; }
+        .slide-track { display: flex; width: calc(100px * 18); animation: scroll 20s linear infinite; }
+        .slide { width: 100px; display: flex; justify-content: center; }
+        .slide img { width: 65px; height: 65px; border-radius: 50%; border: 1px solid #ccc; }
 
-        .reveal-content {
-            padding: 20px;
-            background: #000;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            border-top: 1px solid var(--primary-gold);
-            text-align: center;
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-100px * 9)); } }
+
+        /* SECCIONES DE PRONÓSTICOS */
+        .section-title { text-align: center; font-family: 'Orbitron'; color: var(--primary-gold); }
+        details { background: var(--card-bg); border-radius: 10px; margin-bottom: 8px; border: 1px solid rgba(255,255,255,0.1); }
+        summary { padding: 15px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; }
+        .lot-head { display: flex; align-items: center; gap: 10px; }
+        .lot-head img { width: 40px; height: 40px; border-radius: 50%; background: #fff; }
+        .reveal-content { padding: 15px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; background: #050515; }
+        .animal-card { background: #1c2128; padding: 10px; border-radius: 10px; text-align: center; border: 1px solid var(--primary-gold); }
+
+        .btn-telegram { display: block; background: var(--neon-green); color: #000; text-align: center; padding: 15px; border-radius: 10px; font-family: 'Orbitron'; font-weight: bold; text-decoration: none; margin: 20px 0; }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/logo_apuestas_royal.png" alt="Apuestas Royal" class="logo-main">
+</header>
+
+<div class="container">
+    
+    <div class="oraculo-box">
+        <div class="oraculo-header">ORÁCULO DE LA SUERTE</div>
+        <div style="color: #fff; font-weight: bold; margin-top: 5px;">21/01/2026</div>
+        
+        <div id="piramide-display" class="piramide-txt"></div>
+
+        <div style="color: #fff; font-weight: bold; margin-top: 10px; font-size: 0.9rem;">ORÁCULO DE HOY</div>
+        <div class="oraculo-grid" id="oraculo-fijos"></div>
+    </div>
+
+    <a href="https://t.me/TU_CANAL" class="btn-telegram">🚀 ÚNETE AL TELEGRAM VIP</a>
+
+    <div class="slider">
+        <div class="slide-track" id="carrusel-track"></div>
+    </div>
+
+    <h2 class="section-title">📊 PRONÓSTICOS DEL DÍA</h2>
+    <div id="loterias-container"></div>
+</div>
+
+<script>
+    const urlRepo = "https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/";
+    const animales = {"0":"Delfín","00":"Ballena","1":"Carnero","2":"Toro","3":"Ciempiés","4":"Alacrán","5":"León","6":"Rana","7":"Perico","8":"Ratón","9":"Águila","10":"Tigre","11":"Gato","12":"Caballo","13":"Mono","14":"Paloma","15":"Zorro","16":"Oso","17":"Pavo","18":"Burro","19":"Chivo","20":"Cochino","21":"Gallo","22":"Camello","23":"Cebra","24":"Iguana","25":"Gallina","26":"Vaca","27":"Perro","28":"Zamuro","29":"Elefante","30":"Caimán","31":"Lapa","32":"Ardilla","33":"Pescado","34":"Venado","35":"Pájaro","36":"Culebra"};
+
+    // Configuración dinámica
+    const dia = "21", mes = "01", ano = "2026";
+    const fijos = ["05", "07", "05"]; 
+    const logos = ["guacharo.webp", "ruletaactiva.webp", "junglamillonaria.webp", "lottoactivo.webp", "lagranjita.webp", "ruletaroyal.webp", "lottorey.webp", "chanceanimalito.webp"];
+
+    const pronosticos = [
+        { n: "Lotto Activo", img: "lottoactivo.webp", d: ["05", "18", "12", "00"] },
+        { n: "La Granjita", img: "lagranjita.webp", d: ["14", "01", "33", "24"] },
+        { n: "Ruleta Royal", img: "ruletaroyal.webp", d: ["07", "21", "36", "10"] },
+        { n: "Lotto Rey", img: "lottorey.webp", d: ["09", "11", "25", "32"] }
+    ];
+
+    function init() {
+        // Pirámide
+        document.getElementById('piramide-display').innerHTML = generarPir(dia+mes+ano);
+        
+        // Fijos Oráculo
+        fijos.forEach(num => {
+            document.getElementById('oraculo-fijos').innerHTML += `
+                <div class="oraculo-item">
+                    <img src="${urlRepo}${num}.png" class="oraculo-img">
+                    <span class="oraculo-num">${num}</span>
+                    <span class="oraculo-name">${animales[num]}</span>
+                </div>`;
+        });
+
+        // Carrusel
+        const track = document.getElementById('carrusel-track');
+        [...logos, ...logos].forEach(l => {
+            track.innerHTML += `<div class="slide"><img src="${urlRepo}${l}"></div>`;
+        });
+
+        // Loterías
+        const container = document.getElementById('loterias-container');
+        pronosticos.forEach(p => {
+            let cards = "";
+            p.d.forEach(num => {
+                cards += `<div class="animal-card"><img src="${urlRepo}${num}.png" width="50"><br><b>${num}</b><br><small>${animales[num]}</small></div>`;
+            });
+            container.innerHTML += `
+                <details>
+                    <summary><div class="lot-head"><img src="${urlRepo}${p.img}"><span>${p.n}</span></div><b>VER</b></summary>
+                    <div class="reveal-content">${cards}</div>
+                </details>`;
+        });
+    }
+
+    function generarPir(c) {
+        let h = c + "<br>", a = c;
+        while (a.length > 1) {
+            let n = "";
+            for (let i = 0; i < a.length - 1; i++) n += (parseInt(a[i]) + parseInt(a[i+1])) % 10;
+            h += n + "<br>"; a = n;
         }
+        return h;
+    }
 
-        .animal-item {
-            background: #1c2128;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px dashed var(--primary-gold);
-        }
-
-        .animal-item span { display: block; font-size: 0.8rem; color: var(--primary-gold); }
-        .animal-item strong { font-size: 1.1rem; color: #fff; }
-
-        /* EXPLOSIVOS */
-        .explosivos-wrap {
-            background: linear-gradient(45deg, #800000, #330000);
-            margin-top: 40px;
-            padding: 25px;
+    window.onload = init;
+</script>
+</body>
+</html>
             border-radius: 15px;
             text-align: center;
             border: 2px solid var(--explosive-red);
