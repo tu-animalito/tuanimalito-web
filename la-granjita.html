@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Datos de La Granjita Hoy | Pronósticos y Resultados Animalitos</title>
+    <meta name="description" content="¿Buscas los mejores datos de La Granjita para hoy? Consulta nuestros pronósticos certeros, la pirámide del día y los animalitos fijos para ganar.">
+    <meta name="keywords" content="datos de la granjita, pronosticos la granjita, animalitos granjita, datos para hoy, la granjita resultados">
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --granjita-green-dark: #004d1f; 
+            --granjita-green-light: #008f39;   
+            --primary-gold: #ffcc00;
+            --dark-bg: #051a05;
+            --card-bg: #0a2e0a;
+            --neon-green: #39ff14;
+            --lotto-orange: #ff6600;
+        }
+
+        body { margin: 0; font-family: 'Roboto', sans-serif; background-color: var(--dark-bg); color: #e6edf3; overflow-x: hidden; }
+        
+        .container { 
+            max-width: 800px; 
+            margin: auto; 
+            padding: 15px; 
+            box-sizing: border-box; 
+        }
+
+        header { text-align: center; padding: 25px; background: #000; border-bottom: 3px solid var(--granjita-green-light); }
+        .logo-nav { width: 150px; }
+
+        .content-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px 20px;
+            margin-top: 20px;
+            border: 1px solid rgba(57, 255, 20, 0.2);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+        }
+
+        h1 { font-family: 'Orbitron'; color: var(--primary-gold); font-size: 1.8rem; text-align: center; margin-bottom: 20px; }
+        
+        .img-articulo {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto 20px;
+            border-radius: 15px;
+        }
+
+        .date-badge { 
+            text-align: center; 
+            background: var(--granjita-green-light); 
+            color: #fff; 
+            padding: 8px 20px; 
+            border-radius: 5px; 
+            display: table; 
+            margin: 0 auto 25px; 
+            font-size: 0.9rem; 
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* CAJÓN DE PRONÓSTICOS ESTILO GRANJITA */
+        .pronosticos-box {
+            background: radial-gradient(circle, #005a24 0%, #002b11 100%);
+            border: 3px solid var(--primary-gold);
+            border-radius: 25px;
+            padding: 30px 10px;
+            margin: 30px 0;
+            box-sizing: border-box;
+        }
+        
+        .box-title { 
+            font-family: 'Orbitron'; 
+            color: #fff; 
+            font-size: 1.2rem; 
+            text-align: center;
+            margin-bottom: 35px; 
+            text-shadow: 2px 2px #000;
+        }
+
+        .datos-flex { 
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px 15px; 
+        }
+        
+        .dato-card { 
+            background: #fff; 
+            border-radius: 50%; 
+            width: 130px; 
+            height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border: 6px solid var(--granjita-green-light);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            flex-shrink: 0;
+        }
+        
+        @media (max-width: 360px) {
+            .dato-card { width: 110px; height: 110px; }
+            .dato-card img { width: 65px; height: 65px; }
+        }
+
+        .dato-card img { width: 85px; height: 85px; object-fit: contain; }
+        
+        .dato-num { 
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            background: var(--granjita-green-dark);
+            color: white;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900; 
+            font-size: 1rem; 
+            font-family: 'Orbitron';
+            border: 2px solid var(--primary-gold);
+            z-index: 10;
+        }
+
+        .dato-nombre {
+            position: absolute;
+            bottom: -15px;
+            background: var(--granjita-green-light);
+            color: white;
+            padding: 4px 15px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+            white-space: nowrap;
+        }
+
+        .btn-switch {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--lotto-orange);
+            color: #fff;
+            text-decoration: none;
+            padding: 16px;
+            border-radius: 12px;
+            font-family: 'Orbitron';
+            font-size: 0.85rem;
+            margin: 25px 0;
+            font-weight: bold;
+            border-bottom: 5px solid #a34100;
+            transition: 0.3s;
+        }
+
+        .seo-section { line-height: 1.8; color: #cbd5e1; font-size: 1rem; }
+        .seo-section p { text-align: justify; margin-bottom: 20px; } 
+        
+        .seo-section h2 { 
+            color: var(--primary-gold); 
+            font-family: 'Orbitron'; 
+            font-size: 1.3rem; 
+            margin-top: 40px; 
+            border-left: 5px solid var(--granjita-green-light); 
+            padding-left: 15px; 
+        }
+        
+        .faq-item { 
+            background: rgba(255,255,255,0.05); 
+            padding: 20px; 
+            border-radius: 12px; 
+            margin-bottom: 15px; 
+            border: 1px solid rgba(57, 255, 20, 0.1);
+        }
+        .faq-item b { color: var(--neon-green); display: block; margin-bottom: 8px; font-size: 1.05rem; }
+
+        .btn-telegram { 
+            display: block; 
+            text-align: center; 
+            background: var(--neon-green); 
+            color: #000; 
+            padding: 20px; 
+            border-radius: 15px; 
+            text-decoration: none; 
+            font-family: 'Orbitron'; 
+            font-weight: bold; 
+            margin-top: 30px; 
+            font-size: 1rem;
+            box-shadow: 0 5px 20px rgba(57, 255, 20, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html"><img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/tu-animalito.jpg" class="logo-nav" alt="Tu Animalito"></a>
+</header>
+
+<div class="container">
+    <article class="content-card">
+        <h1>Datos de La Granjita</h1>
+        
+        <img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/lagranjita.webp" alt="La Granjita Oficial" class="img-articulo">
+
+        <div class="date-badge" id="current-date">Actualizado hoy</div>
+
+        <section class="seo-section">
+            <p>Si buscas los mejores <strong>datos de La Granjita</strong>, nuestra plataforma utiliza algoritmos basados en la pirámide numérica y las secuencias de sorteos anteriores para ofrecerte los pronósticos más probables.</p>
+        </section>
+
+        <div class="pronosticos-box">
+            <div class="box-title">🌿 PRONÓSTICOS FIJOS DE HOY 🌿</div>
+            <div class="datos-flex" id="grid-pronosticos">
+                </div>
+        </div>
+
+        <a href="lotto-activo.html" class="btn-switch">
+            👉 VER DATOS DE LOTTO ACTIVO AQUÍ 👈
+        </a>
+
+        <section class="seo-section">
+            <h2>¿Cómo ganar con nuestros datos de La Granjita?</h2>
+            <p>Para aumentar tus posibilidades, es vital seguir los "animales calientes". Según los últimos reportes, el uso de la pirámide numérica combinada con los <strong>datos de La Granjita</strong> permite filtrar los 38 animales a solo 6 opciones fuertes por sorteo.</p>
+            
+            <h2>Preguntas Frecuentes (FAQ)</h2>
+            <div class="faq-item">
+                <b>¿A qué hora son los sorteos?</b>
+                Los sorteos de La Granjita se realizan cada hora desde las 8:00 AM hasta las 7:00 PM.
+            </div>
+            <div class="faq-item">
+                <b>¿Cuánto paga esta lotería?</b>
+                Por cada bolívar o unidad apostada al animalito ganador, recibes 30 veces tu inversión.
+            </div>
+            <div class="faq-item">
+                <b>¿Son seguros estos datos?</b>
+                Nuestros <strong>datos de La Granjita</strong> son proyecciones estadísticas. El azar siempre implica riesgo, ¡juega con responsabilidad!
+            </div>
+        </section>
+
+        <a href="https://t.me/tu_canal" class="btn-telegram">🚀 ÚNETE AL TELEGRAM VIP</a>
+        <a href="index.html" style="display:block; text-align:center; color:#fff; margin-top:30px; font-size:0.8rem; text-decoration:none; opacity:0.6;">← Volver al Inicio</a>
+    </article>
+</div>
+
+<script>
+    // LISTA DE 6 ANIMALITOS (NÚMEROS FORMATEADOS A 2 DÍGITOS)
+    const DATOS_HOY = ["05", "17", "21", "33", "00", "12"];
+    
+    const animales = {"0":"Delfín","00":"Ballena","1":"Carnero","2":"Toro","3":"Ciempiés","4":"Alacrán","5":"León","6":"Rana","7":"Perico","8":"Ratón","9":"Águila","10":"Tigre","11":"Gato","12":"Caballo","13":"Mono","14":"Paloma","15":"Zorro","16":"Oso","17":"Pavo","18":"Burro","19":"Chivo","20":"Cochino","21":"Gallo","22":"Camello","23":"Cebra","24":"Iguana","25":"Gallina","26":"Vaca","27":"Perro","28":"Zamuro","29":"Elefante","30":"Caimán","31":"Lapa","32":"Ardilla","33":"Pescado","34":"Venado","35":"Pájaro","36":"Culebra"};
+    const urlRepo = "https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/";
+
+    function init() {
+        const hoy = new Date();
+        const opciones = { day: 'numeric', month: 'long', year: 'numeric' };
+        document.getElementById('current-date').innerText = "Datos para el " + hoy.toLocaleDateString('es-ES', opciones);
+        
+        const container = document.getElementById('grid-pronosticos');
+        container.innerHTML = ""; 
+        
+        DATOS_HOY.forEach(num => {
+            // Aseguramos formato "0X" si el número es menor a 10 y no es "00" o "0"
+            let numFormateado = num;
+            if(parseInt(num) < 10 && num.length === 1) {
+                numFormateado = "0" + num;
+            }
+
+            if(animales[numFormateado]) {
+                container.innerHTML += `
+                    <div class="dato-card">
+                        <span class="dato-num">${numFormateado}</span>
+                        <img src="${urlRepo}${numFormateado}.png" alt="${animales[numFormateado]}">
+                        <span class="dato-nombre">${animales[numFormateado]}</span>
+                    </div>`;
+            }
+        });
+    }
+    window.onload = init;
+</script>
+</body>
+  </html>
+  
