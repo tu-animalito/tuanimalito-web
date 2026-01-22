@@ -12,14 +12,14 @@
     
     <style>
         :root {
-            --lotto-orange: #ff6600; /* Naranja Oficial Lotto Activo */
-            --lotto-blue: #003399;   /* Azul Oficial Lotto Activo */
+            --lotto-orange: #ff6600; 
+            --lotto-blue: #003399;   
             --primary-gold: #ffcc00;
             --dark-bg: #0a0a2a;
             --card-bg: #161640;
             --neon-red: #ff3131;
             --neon-green: #39ff14;
-            --granjita-green: #008f39; /* Verde para el enlace de La Granjita */
+            --granjita-green: #008f39; 
         }
 
         body { margin: 0; font-family: 'Roboto', sans-serif; background-color: var(--dark-bg); color: #e6edf3; }
@@ -38,6 +38,16 @@
 
         h1 { font-family: 'Orbitron'; color: var(--primary-gold); font-size: 1.5rem; text-align: center; margin-bottom: 10px; }
         
+        /* IMAGEN PRINCIPAL DEL ARTÍCULO */
+        .img-articulo {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
         .date-badge { 
             text-align: center; 
             background: var(--lotto-orange); 
@@ -111,9 +121,8 @@
         }
         .btn-switch:hover { background: #00aa44; transform: scale(1.02); }
 
-        /* SEO TEXT CON JUSTIFICADO */
         .seo-section { line-height: 1.6; color: #cbd5e1; }
-        .seo-section p { text-align: justify; } /* ALINEACIÓN JUSTIFICADA */
+        .seo-section p { text-align: justify; } 
         
         .seo-section h2 { 
             color: var(--lotto-orange); 
@@ -130,7 +139,7 @@
             border-radius: 10px; 
             margin-bottom: 10px; 
             border: 1px solid rgba(255,102,0,0.1);
-            text-align: justify; /* JUSTIFICADO TAMBIÉN EN FAQ */
+            text-align: justify; 
         }
         .faq-item b { color: var(--primary-gold); display: block; margin-bottom: 5px; }
 
@@ -158,6 +167,9 @@
 <div class="container">
     <article class="content-card">
         <h1>Datos de Lotto Activo</h1>
+        
+        <img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/lottoactivo.webp" alt="Lotto Activo Oficial" class="img-articulo">
+
         <div class="date-badge" id="current-date">Actualizado hoy</div>
 
         <section class="seo-section">
@@ -165,7 +177,7 @@
         </section>
 
         <div class="pronosticos-box">
-            <div class="box-title">🧡 PRONÓSTICOS DE HOY 💙</div>
+            <div class="box-title">🧡 PRONÓSTICOS DE HOY (6 FIJOS) 💙</div>
             <div class="datos-grid" id="grid-pronosticos"></div>
         </div>
 
@@ -198,7 +210,9 @@
 </div>
 
 <script>
+    // AQUÍ ESTÁN TUS 6 ANIMALITOS
     const DATOS_HOY = ["05", "17", "21", "33", "00", "12"];
+    
     const animales = {"0":"Delfín","00":"Ballena","1":"Carnero","2":"Toro","3":"Ciempiés","4":"Alacrán","5":"León","6":"Rana","7":"Perico","8":"Ratón","9":"Águila","10":"Tigre","11":"Gato","12":"Caballo","13":"Mono","14":"Paloma","15":"Zorro","16":"Oso","17":"Pavo","18":"Burro","19":"Chivo","20":"Cochino","21":"Gallo","22":"Camello","23":"Cebra","24":"Iguana","25":"Gallina","26":"Vaca","27":"Perro","28":"Zamuro","29":"Elefante","30":"Caimán","31":"Lapa","32":"Ardilla","33":"Pescado","34":"Venado","35":"Pájaro","36":"Culebra"};
     const urlRepo = "https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/";
 
