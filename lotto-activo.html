@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -22,26 +22,34 @@
         }
 
         body { margin: 0; font-family: 'Roboto', sans-serif; background-color: var(--dark-bg); color: #e6edf3; overflow-x: hidden; }
-        .container { max-width: 500px; margin: auto; padding: 10px; box-sizing: border-box; }
-        header { text-align: center; padding: 20px; background: #000; border-bottom: 3px solid var(--lotto-orange); }
-        .logo-nav { width: 130px; }
+        
+        /* Contenedor responsivo: ancho para PC y móvil */
+        .container { 
+            max-width: 800px; 
+            margin: auto; 
+            padding: 15px; 
+            box-sizing: border-box; 
+        }
+
+        header { text-align: center; padding: 25px; background: #000; border-bottom: 3px solid var(--lotto-orange); }
+        .logo-nav { width: 150px; }
 
         .content-card {
             background: var(--card-bg);
             border-radius: 20px;
-            padding: 20px;
-            margin-top: 15px;
+            padding: 30px 20px;
+            margin-top: 20px;
             border: 1px solid rgba(255, 102, 0, 0.2);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
         }
 
-        h1 { font-family: 'Orbitron'; color: var(--primary-gold); font-size: 1.3rem; text-align: center; margin-bottom: 15px; }
+        h1 { font-family: 'Orbitron'; color: var(--primary-gold); font-size: 1.8rem; text-align: center; margin-bottom: 20px; }
         
         .img-articulo {
             display: block;
             width: 100%;
-            max-width: 240px;
-            margin: 0 auto 15px;
+            max-width: 300px;
+            margin: 0 auto 20px;
             border-radius: 15px;
         }
 
@@ -49,88 +57,94 @@
             text-align: center; 
             background: var(--lotto-orange); 
             color: #fff; 
-            padding: 6px 15px; 
+            padding: 8px 20px; 
             border-radius: 5px; 
             display: table; 
-            margin: 0 auto 20px; 
-            font-size: 0.75rem; 
+            margin: 0 auto 25px; 
+            font-size: 0.9rem; 
             font-weight: bold;
             text-transform: uppercase;
         }
 
-        /* CAJÓN DE PRONÓSTICOS CORREGIDO PARA 6 */
+        /* CAJÓN DE PRONÓSTICOS: FLEXBOX PARA GARANTIZAR LOS 6 */
         .pronosticos-box {
             background: radial-gradient(circle, #0044cc 0%, #001a4d 100%);
-            border: 2px solid var(--lotto-orange);
-            border-radius: 20px;
-            padding: 20px 10px;
-            margin: 20px 0;
+            border: 3px solid var(--lotto-orange);
+            border-radius: 25px;
+            padding: 30px 10px;
+            margin: 30px 0;
             box-sizing: border-box;
         }
         
         .box-title { 
             font-family: 'Orbitron'; 
             color: #fff; 
-            font-size: 1rem; 
+            font-size: 1.2rem; 
             text-align: center;
-            margin-bottom: 25px; 
+            margin-bottom: 35px; 
             text-shadow: 2px 2px #000;
         }
 
-        /* GRID FORZADO A 3 FILAS DE 2 COLUMNAS */
-        .datos-grid { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr); 
-            grid-template-rows: repeat(3, auto);
-            gap: 30px 10px; 
-            justify-items: center;
+        /* Ajuste de los 6 elementos */
+        .datos-flex { 
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px 15px; /* Espacio vertical para que no choquen los nombres */
         }
         
         .dato-card { 
             background: #fff; 
             border-radius: 50%; 
-            width: 115px; 
-            height: 115px;
+            width: 130px; 
+            height: 130px;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            border: 5px solid var(--lotto-orange);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.4);
+            border: 6px solid var(--lotto-orange);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            flex-shrink: 0; /* Evita que se encojan */
         }
         
-        .dato-card img { width: 70px; height: 70px; object-fit: contain; }
+        /* En móviles muy pequeños, reducimos un poco el círculo */
+        @media (max-width: 360px) {
+            .dato-card { width: 110px; height: 110px; }
+            .dato-card img { width: 65px; height: 65px; }
+        }
+
+        .dato-card img { width: 85px; height: 85px; object-fit: contain; }
         
         .dato-num { 
             position: absolute;
-            top: -5px;
-            left: -5px;
+            top: -8px;
+            left: -8px;
             background: var(--lotto-blue);
             color: white;
-            width: 30px;
-            height: 30px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 900; 
-            font-size: 0.85rem; 
+            font-size: 1rem; 
             font-family: 'Orbitron';
             border: 2px solid white;
-            z-index: 5;
+            z-index: 10;
         }
 
         .dato-nombre {
             position: absolute;
-            bottom: -12px;
+            bottom: -15px;
             background: var(--lotto-orange);
             color: white;
-            padding: 3px 12px;
-            border-radius: 12px;
-            font-size: 0.65rem;
+            padding: 4px 15px;
+            border-radius: 20px;
+            font-size: 0.75rem;
             font-weight: bold;
             text-transform: uppercase;
-            box-shadow: 0 3px 5px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
             white-space: nowrap;
         }
 
@@ -141,48 +155,52 @@
             background: var(--granjita-green);
             color: #fff;
             text-decoration: none;
-            padding: 14px;
+            padding: 16px;
             border-radius: 12px;
             font-family: 'Orbitron';
-            font-size: 0.75rem;
-            margin: 20px 0;
+            font-size: 0.85rem;
+            margin: 25px 0;
             font-weight: bold;
-            border-bottom: 4px solid #004d1f;
+            border-bottom: 5px solid #004d1f;
+            transition: 0.3s;
         }
+        .btn-switch:hover { transform: scale(1.02); filter: brightness(1.1); }
 
-        /* RECUPERACIÓN DE TEXTO ORIGINAL */
-        .seo-section { line-height: 1.6; color: #cbd5e1; font-size: 0.95rem; }
-        .seo-section p { text-align: justify; margin-bottom: 15px; } 
+        /* SECCIONES DE TEXTO ORIGINAL */
+        .seo-section { line-height: 1.8; color: #cbd5e1; font-size: 1rem; }
+        .seo-section p { text-align: justify; margin-bottom: 20px; } 
         
         .seo-section h2 { 
             color: var(--lotto-orange); 
             font-family: 'Orbitron'; 
-            font-size: 1.1rem; 
-            margin-top: 30px; 
-            border-left: 4px solid var(--lotto-blue); 
-            padding-left: 10px; 
+            font-size: 1.3rem; 
+            margin-top: 40px; 
+            border-left: 5px solid var(--lotto-blue); 
+            padding-left: 15px; 
         }
         
         .faq-item { 
-            background: rgba(255,255,255,0.05); 
-            padding: 15px; 
-            border-radius: 10px; 
-            margin-bottom: 10px; 
-            border: 1px solid rgba(255,102,0,0.1);
+            background: rgba(255,255,255,0.07); 
+            padding: 20px; 
+            border-radius: 12px; 
+            margin-bottom: 15px; 
+            border: 1px solid rgba(255,102,0,0.15);
         }
-        .faq-item b { color: var(--primary-gold); display: block; margin-bottom: 5px; }
+        .faq-item b { color: var(--primary-gold); display: block; margin-bottom: 8px; font-size: 1.05rem; }
 
         .btn-telegram { 
             display: block; 
             text-align: center; 
             background: var(--neon-green); 
             color: #000; 
-            padding: 16px; 
-            border-radius: 12px; 
+            padding: 20px; 
+            border-radius: 15px; 
             text-decoration: none; 
             font-family: 'Orbitron'; 
             font-weight: bold; 
-            margin-top: 20px; 
+            margin-top: 30px; 
+            font-size: 1rem;
+            box-shadow: 0 5px 20px rgba(57, 255, 20, 0.4);
         }
     </style>
 </head>
@@ -206,7 +224,7 @@
 
         <div class="pronosticos-box">
             <div class="box-title">🧡 PRONÓSTICOS DE HOY (6 FIJOS) 💙</div>
-            <div class="datos-grid" id="grid-pronosticos">
+            <div class="datos-flex" id="grid-pronosticos">
                 </div>
         </div>
 
@@ -234,12 +252,12 @@
         </section>
 
         <a href="https://t.me/tu_canal" class="btn-telegram">🚀 ÚNETE AL TELEGRAM VIP</a>
-        <a href="index.html" style="display:block; text-align:center; color:#fff; margin-top:25px; font-size:0.8rem; text-decoration:none; opacity:0.6;">← Volver al Inicio</a>
+        <a href="index.html" style="display:block; text-align:center; color:#fff; margin-top:30px; font-size:0.9rem; text-decoration:none; opacity:0.6;">← Volver al Inicio</a>
     </article>
 </div>
 
 <script>
-    // LISTA DE 6 ANIMALITOS
+    // LISTA DE 6 ANIMALITOS (FIJOS)
     const DATOS_HOY = ["05", "17", "21", "33", "00", "12"];
     
     const animales = {"0":"Delfín","00":"Ballena","1":"Carnero","2":"Toro","3":"Ciempiés","4":"Alacrán","5":"León","6":"Rana","7":"Perico","8":"Ratón","9":"Águila","10":"Tigre","11":"Gato","12":"Caballo","13":"Mono","14":"Paloma","15":"Zorro","16":"Oso","17":"Pavo","18":"Burro","19":"Chivo","20":"Cochino","21":"Gallo","22":"Camello","23":"Cebra","24":"Iguana","25":"Gallina","26":"Vaca","27":"Perro","28":"Zamuro","29":"Elefante","30":"Caimán","31":"Lapa","32":"Ardilla","33":"Pescado","34":"Venado","35":"Pájaro","36":"Culebra"};
@@ -247,11 +265,11 @@
 
     function init() {
         const hoy = new Date();
-        const opciones = { day: 'numeric', month: 'long' };
+        const opciones = { day: 'numeric', month: 'long', year: 'numeric' };
         document.getElementById('current-date').innerText = "Datos para el " + hoy.toLocaleDateString('es-ES', opciones);
         
         const container = document.getElementById('grid-pronosticos');
-        container.innerHTML = ""; // Limpiar por seguridad
+        container.innerHTML = ""; 
         
         DATOS_HOY.forEach(num => {
             if(animales[num]) {
