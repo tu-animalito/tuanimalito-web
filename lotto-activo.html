@@ -17,32 +17,31 @@
             --primary-gold: #ffcc00;
             --dark-bg: #0a0a2a;
             --card-bg: #161640;
-            --neon-red: #ff3131;
             --neon-green: #39ff14;
             --granjita-green: #008f39; 
         }
 
-        body { margin: 0; font-family: 'Roboto', sans-serif; background-color: var(--dark-bg); color: #e6edf3; }
-        .container { max-width: 600px; margin: auto; padding: 15px; }
+        body { margin: 0; font-family: 'Roboto', sans-serif; background-color: var(--dark-bg); color: #e6edf3; overflow-x: hidden; }
+        .container { max-width: 500px; margin: auto; padding: 10px; box-sizing: border-box; }
         header { text-align: center; padding: 20px; background: #000; border-bottom: 3px solid var(--lotto-orange); }
-        .logo-nav { width: 140px; }
+        .logo-nav { width: 130px; }
 
         .content-card {
             background: var(--card-bg);
             border-radius: 20px;
-            padding: 25px;
-            margin-top: 20px;
+            padding: 20px;
+            margin-top: 15px;
             border: 1px solid rgba(255, 102, 0, 0.2);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        h1 { font-family: 'Orbitron'; color: var(--primary-gold); font-size: 1.5rem; text-align: center; margin-bottom: 10px; }
+        h1 { font-family: 'Orbitron'; color: var(--primary-gold); font-size: 1.3rem; text-align: center; margin-bottom: 15px; }
         
         .img-articulo {
             display: block;
             width: 100%;
-            max-width: 280px;
-            margin: 0 auto 20px;
+            max-width: 240px;
+            margin: 0 auto 15px;
             border-radius: 15px;
         }
 
@@ -50,96 +49,95 @@
             text-align: center; 
             background: var(--lotto-orange); 
             color: #fff; 
-            padding: 6px 20px; 
+            padding: 6px 15px; 
             border-radius: 5px; 
             display: table; 
             margin: 0 auto 20px; 
-            font-size: 0.8rem; 
+            font-size: 0.75rem; 
             font-weight: bold;
             text-transform: uppercase;
         }
 
-        /* CAJÓN DE PRONÓSTICOS MEJORADO */
+        /* CONTENEDOR DE PRONÓSTICOS CORREGIDO */
         .pronosticos-box {
             background: radial-gradient(circle, #0044cc 0%, #001a4d 100%);
-            border: 3px solid var(--lotto-orange);
+            border: 2px solid var(--lotto-orange);
             border-radius: 20px;
-            padding: 25px 10px;
-            margin: 25px 0 15px 0;
+            padding: 20px 5px;
+            margin: 20px 0;
             text-align: center;
+            box-sizing: border-box;
         }
         
         .box-title { 
             font-family: 'Orbitron'; 
             color: #fff; 
-            font-size: 1.1rem; 
+            font-size: 1rem; 
             margin-bottom: 20px; 
             text-shadow: 2px 2px #000;
         }
 
-        /* GRID DE 6 ANIMALITOS */
+        /* GRID CORREGIDO PARA 6 ELEMENTOS (3 FILAS DE 2) */
         .datos-grid { 
             display: grid; 
-            grid-template-columns: repeat(2, 1fr); /* 2 columnas para que se vean grandes */
-            gap: 20px; 
-            padding: 10px;
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 25px 10px; 
+            justify-items: center;
+            align-items: center;
         }
         
-        /* CARD CIRCULAR ESTILO APP OFICIAL */
+        /* CARD CIRCULAR ARMONIZADA */
         .dato-card { 
             background: #fff; 
-            border-radius: 50%; /* Totalmente circular */
-            width: 140px;
-            height: 140px;
-            margin: auto;
+            border-radius: 50%; 
+            width: 125px; /* Tamaño ajustado para que no desborde */
+            height: 125px;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             position: relative;
-            border: 6px solid var(--lotto-orange);
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.2), 0 10px 20px rgba(0,0,0,0.4);
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 5px solid var(--lotto-orange);
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.2), 0 8px 15px rgba(0,0,0,0.4);
+            transition: 0.3s ease-in-out;
         }
         
-        .dato-card:hover { transform: scale(1.1) rotate(5deg); }
-
         .dato-card img { 
-            width: 85px; 
-            height: 85px; 
+            width: 75px; 
+            height: 75px; 
             object-fit: contain;
-            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.3));
         }
         
         .dato-num { 
             position: absolute;
-            top: 5px;
-            left: 10px;
+            top: -5px;
+            left: -5px;
             background: var(--lotto-blue);
             color: white;
-            width: 35px;
-            height: 35px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 900; 
-            font-size: 1rem; 
+            font-size: 0.9rem; 
             font-family: 'Orbitron';
             border: 2px solid white;
+            z-index: 2;
         }
 
         .dato-nombre {
             position: absolute;
-            bottom: -5px;
+            bottom: -10px;
             background: var(--lotto-orange);
             color: white;
-            padding: 2px 10px;
-            border-radius: 10px;
-            font-size: 0.7rem;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.65rem;
             font-weight: bold;
             text-transform: uppercase;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            box-shadow: 0 3px 5px rgba(0,0,0,0.3);
+            white-space: nowrap;
         }
 
         .btn-switch {
@@ -149,32 +147,30 @@
             background: var(--granjita-green);
             color: #fff;
             text-decoration: none;
-            padding: 15px;
+            padding: 14px;
             border-radius: 12px;
             font-family: 'Orbitron';
-            font-size: 0.8rem;
-            margin-bottom: 25px;
+            font-size: 0.75rem;
+            margin: 20px 0;
             font-weight: bold;
             border-bottom: 4px solid #004d1f;
-            transition: 0.2s;
         }
-        .btn-switch:hover { background: #00aa44; transform: translateY(2px); border-bottom-width: 2px; }
 
-        .seo-section { line-height: 1.6; color: #cbd5e1; }
+        .seo-section { line-height: 1.6; color: #cbd5e1; font-size: 0.9rem; }
         .seo-section p { text-align: justify; } 
         
         .seo-section h2 { 
             color: var(--lotto-orange); 
             font-family: 'Orbitron'; 
-            font-size: 1.1rem; 
-            margin-top: 30px; 
+            font-size: 1rem; 
+            margin-top: 25px; 
             border-left: 4px solid var(--lotto-blue); 
             padding-left: 10px; 
         }
         
         .faq-item { 
             background: rgba(255,255,255,0.05); 
-            padding: 15px; 
+            padding: 12px; 
             border-radius: 10px; 
             margin-bottom: 10px; 
             border: 1px solid rgba(255,102,0,0.1);
@@ -187,13 +183,12 @@
             text-align: center; 
             background: var(--neon-green); 
             color: #000; 
-            padding: 18px; 
+            padding: 16px; 
             border-radius: 12px; 
             text-decoration: none; 
             font-family: 'Orbitron'; 
             font-weight: bold; 
-            margin-top: 25px; 
-            box-shadow: 0 4px 15px rgba(57, 255, 20, 0.3);
+            margin-top: 20px; 
         }
     </style>
 </head>
@@ -212,35 +207,31 @@
         <div class="date-badge" id="current-date">Actualizado hoy</div>
 
         <section class="seo-section">
-            <p>Si buscas los mejores <strong>datos de Lotto Activo</strong>, nuestra plataforma utiliza algoritmos basados en la pirámide numérica y las secuencias de sorteos anteriores para ofrecerte los pronósticos más probables.</p>
+            <p>Obtén los <strong>datos de Lotto Activo</strong> más precisos. Usamos proyecciones estadísticas para darte los 6 animalitos con mayor probabilidad de salir hoy.</p>
         </section>
 
         <div class="pronosticos-box">
-            <div class="box-title">🧡 PRONÓSTICOS FIJOS PARA HOY 💙</div>
+            <div class="box-title">🧡 PRONÓSTICOS FIJOS 💙</div>
             <div class="datos-grid" id="grid-pronosticos">
                 </div>
         </div>
 
         <a href="la-granjita.html" class="btn-switch">
-            👉 VER PRONÓSTICOS DE LA GRANJITA
+            👉 VER DATOS DE LA GRANJITA
         </a>
 
         <section class="seo-section">
-            <h2>¿Cómo ganar con nuestros datos de Lotto Activo?</h2>
-            <p>Para aumentar tus posibilidades, es vital seguir los "animales calientes". Según los últimos reportes, el uso de la pirámide numérica combinada con los <strong>datos de Lotto Activo</strong> permite filtrar los 38 animales a solo 6 opciones fuertes por sorteo.</p>
+            <h2>¿Cómo ganar en Lotto Activo?</h2>
+            <p>Nuestros <strong>datos de Lotto Activo</strong> se basan en la pirámide del día. Analizamos los resultados anteriores para filtrar las mejores opciones entre los 38 animales.</p>
             
-            <h2>Preguntas Frecuentes (FAQ)</h2>
+            <h2>Preguntas Frecuentes</h2>
             <div class="faq-item">
-                <b>¿A qué hora son los sorteos?</b>
-                Los sorteos oficiales se realizan cada hora desde las 8:00 AM hasta las 7:00 PM.
+                <b>¿Cuántos sorteos hay?</b>
+                Hay 11 sorteos diarios, desde las 8:00 AM hasta las 7:00 PM.
             </div>
             <div class="faq-item">
-                <b>¿Cuánto paga esta lotería?</b>
-                Por cada unidad apostada al animalito ganador, recibes 30 veces tu inversión.
-            </div>
-            <div class="faq-item">
-                <b>¿Son seguros estos datos?</b>
-                Nuestros <strong>datos de Lotto Activo</strong> son proyecciones estadísticas. El azar siempre implica riesgo.
+                <b>¿Son seguros los datos?</b>
+                Son pronósticos basados en cálculos, el éxito depende del azar.
             </div>
         </section>
 
@@ -250,7 +241,7 @@
 </div>
 
 <script>
-    // CAMBIA ESTOS 6 NÚMEROS DIARIAMENTE
+    // LISTA DE 6 PRONÓSTICOS
     const DATOS_HOY = ["05", "17", "21", "33", "00", "12"];
     
     const animales = {"0":"Delfín","00":"Ballena","1":"Carnero","2":"Toro","3":"Ciempiés","4":"Alacrán","5":"León","6":"Rana","7":"Perico","8":"Ratón","9":"Águila","10":"Tigre","11":"Gato","12":"Caballo","13":"Mono","14":"Paloma","15":"Zorro","16":"Oso","17":"Pavo","18":"Burro","19":"Chivo","20":"Cochino","21":"Gallo","22":"Camello","23":"Cebra","24":"Iguana","25":"Gallina","26":"Vaca","27":"Perro","28":"Zamuro","29":"Elefante","30":"Caimán","31":"Lapa","32":"Ardilla","33":"Pescado","34":"Venado","35":"Pájaro","36":"Culebra"};
@@ -263,7 +254,6 @@
         
         const container = document.getElementById('grid-pronosticos');
         
-        // Generar los 6 animalitos en el grid
         DATOS_HOY.forEach(num => {
             if(animales[num]) {
                 container.innerHTML += `
@@ -279,4 +269,3 @@
 </script>
 </body>
 </html>
-            
