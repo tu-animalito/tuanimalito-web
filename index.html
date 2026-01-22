@@ -3,7 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tu Animalito | Oráculo y Pronósticos</title>
+    
+    <title>Datos de Animalitos Hoy | Oráculo, Pirámide y Pronósticos</title>
+    <meta name="description" content="Consigue los mejores datos de animalitos para hoy. Oráculo de la suerte, pirámide numérica y pronósticos explosivos para Lotto Activo y La Granjita.">
+    <meta name="keywords" content="datos de animalitos, lotto activo, la granjita, pronosticos animalitos, piramide de hoy">
+    <link rel="canonical" href="https://tuanimalito.com.ve/" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "SoftwareApplication",
+      "name": "Tu Animalito Oráculo",
+      "operatingSystem": "Web",
+      "applicationCategory": "GameApplication",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "1250"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0.00",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     
     <style>
@@ -24,7 +49,7 @@
         header { text-align: center; padding: 25px; background: #000; border-bottom: 3px solid var(--primary-gold); margin-bottom: 20px; }
         .logo-main { width: 100%; max-width: 280px; height: auto; }
 
-        /* CARRUSEL INFINITO E INTERACTIVO */
+        /* CARRUSEL INFINITO */
         .slider-wrapper { 
             background: #111133; padding: 20px 0; border-top: 1px solid var(--primary-gold); border-bottom: 1px solid var(--primary-gold);
             margin-bottom: var(--section-spacing); overflow: hidden; position: relative;
@@ -45,7 +70,7 @@
             border-radius: 20px; padding: 25px; text-align: center; border: 2px solid #fff;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        .oraculo-header { font-family: 'Orbitron'; letter-spacing: 2px; font-weight: bold; color: #fff; }
+        .oraculo-header { font-family: 'Orbitron'; letter-spacing: 2px; font-weight: bold; color: #fff; margin: 0; font-size: 1.4rem; }
         .oraculo-flex { display: flex; justify-content: space-around; align-items: center; margin: 20px 0; }
         .piramide-txt { font-family: 'Courier New', monospace; color: #1e3a8a; background: #fff; padding: 15px; border-radius: 10px; font-weight: bold; line-height: 1.1; font-size: 1.1rem; text-align: left; }
         
@@ -58,7 +83,7 @@
         .oraculo-item { background: #fff; padding: 10px; border-radius: 15px; width: 90px; color: #000; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .oraculo-item img { width: 55px; height: 55px; border-radius: 50%; border: 2px solid var(--neon-red); }
 
-        /* EXPLOSIVOS REDISEÑADOS */
+        /* EXPLOSIVOS */
         .explosivos-new-section {
             background: var(--card-bg); 
             border-radius: 20px; 
@@ -79,7 +104,6 @@
         .exp-unit { flex: 1; display: flex; flex-direction: column; align-items: center; }
         .exp-img-wrapper { position: relative; width: 75px; height: 75px; margin-bottom: 10px; }
 
-        /* ANIMACIÓN DE BRILLO DORADO */
         @keyframes glowGold {
             0% { box-shadow: 0 0 5px var(--primary-gold); border-color: var(--primary-gold); }
             50% { box-shadow: 0 0 20px var(--primary-gold); border-color: #fff; }
@@ -106,7 +130,8 @@
 
         /* ARTÍCULOS */
         .articulos-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: var(--section-spacing); }
-        .art-card { background: var(--card-bg); border-radius: 12px; padding: 20px; text-align: center; border: 1px solid rgba(255,204,0,0.2); text-decoration: none; color: inherit; }
+        .art-card { background: var(--card-bg); border-radius: 12px; padding: 20px; text-align: center; border: 1px solid rgba(255,204,0,0.2); text-decoration: none; color: inherit; transition: 0.3s; }
+        .art-card:hover { border-color: var(--primary-gold); transform: translateY(-5px); }
         .art-card img { width: 65px; height: 65px; border-radius: 50%; margin-bottom: 12px; background: #fff; }
         .art-card h3 { font-size: 0.9rem; margin: 0; color: var(--primary-gold); font-family: 'Orbitron'; }
 
@@ -118,7 +143,7 @@
 <body>
 
 <header>
-    <img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/tu-animalito.jpg" class="logo-main">
+    <img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/tu-animalito.jpg" alt="Logo Tu Animalito - Datos de Animalitos Hoy" class="logo-main">
 </header>
 
 <div class="container">
@@ -131,7 +156,7 @@
 
     <section class="oraculo-section">
         <div class="oraculo-box">
-            <div class="oraculo-header">ORÁCULO DE LA SUERTE</div>
+            <h1 class="oraculo-header">ORÁCULO DE DATOS DE ANIMALITOS</h1>
             <div id="fecha-txt" style="font-size: 0.9rem; margin-top: 5px; color: #fff;"></div>
             <div class="oraculo-flex">
                 <div id="piramide-ui" class="piramide-txt"></div>
@@ -144,8 +169,8 @@
 
     <section class="explosivos-new-section">
         <div class="exp-header">
-            <div style="font-size: 1.2rem; letter-spacing: 2px;">ANIMALITOS EXPLOSIVOS</div>
-            <div style="font-size: 0.7rem; opacity: 0.8; margin-top: 5px;">WWW.TUANIMALITO.COM.VE</div>
+            <h2 style="font-size: 1.2rem; letter-spacing: 2px; margin: 0;">ANIMALITOS EXPLOSIVOS</h2>
+            <div style="font-size: 0.7rem; opacity: 0.8; margin-top: 5px;">LOS MEJORES DATOS DE ANIMALITOS PARA GANAR</div>
         </div>
         <div class="exp-white-card">
             <div class="exp-row" id="explosivos-lista"></div>
@@ -156,10 +181,10 @@
     <a href="#" class="btn-telegram">🚀 ÚNETE AL CANAL TELEGRAM VIP</a>
 
     <div class="articulos-grid">
-        <a href="#" class="art-card"><img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/lottoactivo.webp"><h3>Lotto Activo</h3></a>
-        <a href="#" class="art-card"><img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/lagranjita.webp"><h3>La Granjita</h3></a>
-        <a href="#" class="art-card"><img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/ruletaroyal.webp"><h3>Ruleta Royal</h3></a>
-        <a href="#" class="art-card"><img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/lottorey.webp"><h3>Lotto Rey</h3></a>
+        <a href="lotto-activo.html" class="art-card"><img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/lottoactivo.webp" alt="Datos de Lotto Activo"><h3>Lotto Activo</h3></a>
+        <a href="la-granjita.html" class="art-card"><img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/lagranjita.webp" alt="Datos de La Granjita"><h3>La Granjita</h3></a>
+        <a href="ruleta-royal.html" class="art-card"><img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/ruletaroyal.webp" alt="Datos de Ruleta Royal"><h3>Ruleta Royal</h3></a>
+        <a href="lotto-rey.html" class="art-card"><img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/lottorey.webp" alt="Datos de Lotto Rey"><h3>Lotto Rey</h3></a>
     </div>
 
 </div>
@@ -168,7 +193,7 @@
     <div class="footer-links">
         <a href="#">Aviso Legal</a> | <a href="#">Contacto</a> | <a href="#">Publicidad</a>
     </div>
-    <p>&copy; 2026 <b>TuAnimalito.com.ve</b>. Todos los derechos reservados.</p>
+    <p>&copy; 2026 <b>TuAnimalito.com.ve</b>. Especialistas en datos de animalitos para hoy.</p>
 </footer>
 
 <script>
@@ -210,7 +235,7 @@
             expCont.innerHTML += `
                 <div class="exp-unit">
                     <div class="exp-img-wrapper">
-                        <img src="${urlRepo}${item.num}.png" class="exp-img-main">
+                        <img src="${urlRepo}${item.num}.png" class="exp-img-main" alt="Dato de animalito ${animales[item.num]}">
                         <div class="exp-badge-num">${item.num}</div>
                     </div>
                     <div class="exp-name">${animales[item.num]}</div>
@@ -221,7 +246,7 @@
 
         // PRONÓSTICO
         ["17", "34", "13"].forEach(n => {
-            document.getElementById('oraculo-fijos').innerHTML += `<div class="oraculo-item"><img src="${urlRepo}${n}.png"><div style="font-weight:bold">${n}</div><div style="font-size:0.6rem; text-transform:uppercase">${animales[n]}</div></div>`;
+            document.getElementById('oraculo-fijos').innerHTML += `<div class="oraculo-item"><img src="${urlRepo}${n}.png" alt="${animales[n]}"><div style="font-weight:bold">${n}</div><div style="font-size:0.6rem; text-transform:uppercase">${animales[n]}</div></div>`;
         });
 
         // CARRUSEL INFINITO
@@ -229,7 +254,7 @@
         const container = document.getElementById('slider-container');
         const logos = ["lottoactivo.webp", "lagranjita.webp", "ruletaroyal.webp", "lottorey.webp", "guacharo.webp"];
         [...logos, ...logos, ...logos].forEach(img => {
-            track.innerHTML += `<div class="slide"><img src="${urlRepo}${img}"></div>`;
+            track.innerHTML += `<div class="slide"><img src="${urlRepo}${img}" alt="Logo Lotería Animalitos"></div>`;
         });
 
         let scrollSpeed = 1;
