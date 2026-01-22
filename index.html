@@ -11,68 +11,85 @@
             --primary-gold: #ffcc00;
             --dark-bg: #0a0a2a;
             --card-bg: #161640;
-            --neon-red: #e63946;
-            --navy: #1e3a8a;
-            --section-spacing: 30px;
+            --neon-red: #ff3131;
+            --neon-green: #39ff14;
+            --footer-bg: #050515;
+            --section-spacing: 40px;
         }
 
-        body { margin: 0; font-family: 'Roboto', sans-serif; background-color: #f0f2f5; color: #333; overflow-x: hidden; }
-        .container { max-width: 600px; margin: auto; padding: 10px; }
+        body { margin: 0; font-family: 'Roboto', sans-serif; background-color: var(--dark-bg); color: #e6edf3; overflow-x: hidden; }
+        .container { max-width: 600px; margin: auto; padding: 15px; }
 
         /* CABECERA */
-        header { text-align: center; padding: 15px; background: #000; border-bottom: 3px solid var(--primary-gold); }
-        .logo-main { width: 100%; max-width: 250px; height: auto; }
+        header { text-align: center; padding: 25px; background: #000; border-bottom: 3px solid var(--primary-gold); margin-bottom: 20px; }
+        .logo-main { width: 100%; max-width: 280px; height: auto; }
 
-        /* CARRUSEL */
-        .slider-wrapper { background: #fff; padding: 15px 0; border-bottom: 1px solid #ddd; overflow: hidden; margin-bottom: 20px; }
-        .slider-container { display: flex; overflow-x: auto; scrollbar-width: none; }
-        .slider-track { display: flex; }
-        .slide { width: 90px; flex-shrink: 0; text-align: center; padding: 0 5px; }
-        .slide img { width: 65px; height: 65px; border-radius: 50%; border: 2px solid #ddd; background: #fff; }
-
-        /* SECCIÓN EXPLOSIVOS (ROJO) */
-        .explosivos-new-section {
-            background: var(--neon-red); border-radius: 25px; padding: 20px 10px;
-            margin-bottom: var(--section-spacing); text-align: center; color: #fff;
+        /* CARRUSEL INFINITO E INTERACTIVO */
+        .slider-wrapper { 
+            background: #111133; padding: 20px 0; border-top: 1px solid var(--primary-gold); border-bottom: 1px solid var(--primary-gold);
+            margin-bottom: var(--section-spacing); overflow: hidden; position: relative;
         }
-        .exp-header h2 { font-family: 'Orbitron'; font-size: 1.1rem; margin: 10px 0; letter-spacing: 1px; }
-        .exp-white-card { background: #fff; border-radius: 20px; padding: 20px 5px; margin-top: 15px; }
-        .exp-row { display: flex; justify-content: space-around; }
-        .exp-unit { flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; }
-        .exp-img-wrapper { position: relative; width: 80px; height: 80px; }
+        .slider-container {
+            display: flex; overflow-x: auto; scrollbar-width: none; cursor: grab;
+            -webkit-overflow-scrolling: touch;
+        }
+        .slider-container::-webkit-scrollbar { display: none; }
+        .slider-track { display: flex; }
+        .slide { width: 100px; flex-shrink: 0; text-align: center; padding: 0 10px; }
+        .slide img { width: 75px; height: 75px; border-radius: 50%; border: 2px solid var(--primary-gold); background: #fff; pointer-events: none; }
+
+        /* EXPLOSIVOS ESTILO PREMIUM */
+        .explosivos-new-section {
+            background: var(--neon-red); border-radius: 20px; padding: 20px 10px;
+            margin-bottom: var(--section-spacing); text-align: center; box-shadow: 0 0 20px rgba(255, 49, 49, 0.3);
+        }
+        .exp-header { color: #fff; font-family: 'Orbitron'; margin-bottom: 20px; }
+        .exp-white-card { background: #fff; border-radius: 15px; padding: 20px 5px; color: #333; }
+        .exp-row { display: flex; justify-content: space-around; gap: 8px; }
+        .exp-unit { flex: 1; display: flex; flex-direction: column; align-items: center; }
+        .exp-img-wrapper { position: relative; width: 75px; height: 75px; margin-bottom: 10px; }
         .exp-img-main { width: 100%; height: 100%; border-radius: 50%; border: 3px solid var(--neon-red); background: #fff; }
         .exp-badge-num { 
-            position: absolute; bottom: 5px; right: 0; background: #000; color: #fff; 
-            width: 25px; height: 25px; border-radius: 50%; font-size: 0.8rem; 
-            display: flex; align-items: center; justify-content: center; border: 2px solid #fff; font-weight: bold;
+            position: absolute; bottom: 0; right: 0; background: #000; color: #fff; 
+            width: 24px; height: 24px; border-radius: 50%; font-size: 0.75rem; font-weight: bold;
+            display: flex; align-items: center; justify-content: center; border: 2px solid #fff;
         }
-        .exp-name { color: var(--neon-red); font-weight: bold; font-size: 0.9rem; margin-top: 8px; text-transform: uppercase; }
-        .exp-lotto-tag { background: #444; color: #fff; font-size: 0.65rem; padding: 4px 8px; border-radius: 5px; margin-top: 5px; font-weight: bold; }
+        .exp-name { color: var(--neon-red); font-weight: bold; font-size: 0.85rem; text-transform: uppercase; }
+        .exp-lotto-tag { background: #444; color: #fff; font-size: 0.6rem; padding: 4px 6px; border-radius: 5px; margin-top: 5px; font-weight: bold; }
         .exp-lotto-tag.fijo { background: var(--neon-red); }
-        .sorteo-sugerido { border-top: 1px dashed #ccc; margin-top: 15px; padding-top: 10px; color: #666; font-size: 0.8rem; }
 
-        /* ORÁCULO (ESTILO IMAGEN) */
-        .oraculo-section { background: linear-gradient(to bottom, var(--neon-red), var(--navy)); border-radius: 20px; padding: 2px; margin-bottom: var(--section-spacing); }
-        .oraculo-inner { background: #fff; border-radius: 18px; padding: 20px 10px; text-align: center; }
-        .oraculo-title { color: var(--navy); font-family: 'Orbitron'; font-weight: bold; margin-bottom: 5px; }
-        .oraculo-url { font-size: 0.75rem; color: #666; margin-bottom: 15px; }
-        .oraculo-grid-main { display: flex; justify-content: space-around; align-items: center; margin: 20px 0; }
-        .piramide-display { font-family: monospace; font-size: 1.1rem; line-height: 1.2; color: #444; text-align: left; }
-        .punta-final { display: flex; flex-direction: column; align-items: center; }
-        .p-val-top { font-size: 2rem; font-weight: bold; color: var(--navy); }
-        .p-val-bottom { font-size: 2.2rem; font-weight: bold; color: var(--neon-red); line-height: 1; }
+        /* ORÁCULO DINÁMICO (COLORES ORIGINALES) */
+        .oraculo-section { margin-bottom: var(--section-spacing); }
+        .oraculo-box {
+            background: linear-gradient(180deg, #b91c1c 0%, #1e3a8a 100%);
+            border-radius: 20px; padding: 25px; text-align: center; border: 2px solid #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .oraculo-header { font-family: 'Orbitron'; letter-spacing: 2px; font-weight: bold; color: #fff; }
+        .oraculo-flex { display: flex; justify-content: space-around; align-items: center; margin: 20px 0; }
+        .piramide-txt { font-family: 'Courier New', monospace; color: #1e3a8a; background: #fff; padding: 15px; border-radius: 10px; font-weight: bold; line-height: 1.1; font-size: 1.1rem; text-align: left; }
         
-        .diamante-container { display: grid; grid-template-columns: repeat(3, 42px); gap: 8px; }
-        .d-cell { width: 42px; height: 42px; border-radius: 50%; border: 2px solid #333; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem; }
-        .d-cell.red { background: var(--neon-red); color: #fff; border-color: var(--neon-red); }
-        .d-invisible { visibility: hidden; }
+        .diamante-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .circulo { width: 38px; height: 38px; background: #fff; color: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; border: 2px solid #333; font-size: 1.1rem; }
+        .circulo.rojo { background: var(--neon-red); color: #fff; border-color: #fff; }
+        .invisible { visibility: hidden; }
 
-        .pronostico-container { background: #f8f9fa; border-radius: 15px; padding: 15px; margin-top: 20px; display: flex; justify-content: space-around; }
-        .pron-item img { width: 55px; height: 55px; border-radius: 50%; border: 2px solid var(--neon-red); margin-bottom: 5px; }
-        .pron-num { color: var(--neon-red); font-weight: bold; display: block; font-size: 1.1rem; }
-        .pron-name { font-size: 0.7rem; font-weight: bold; text-transform: uppercase; color: #333; }
+        .oraculo-results { display: flex; justify-content: center; gap: 12px; margin-top: 20px; }
+        .oraculo-item { background: #fff; padding: 10px; border-radius: 15px; width: 90px; color: #000; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .oraculo-item img { width: 55px; height: 55px; border-radius: 50%; border: 2px solid var(--neon-red); }
 
-        .btn-telegram { display: block; background: #22c55e; color: #fff; text-align: center; padding: 15px; border-radius: 15px; text-decoration: none; font-weight: bold; margin: 20px 0; font-family: 'Orbitron'; }
+        /* BOTÓN TELEGRAM */
+        .btn-telegram { display: block; background: var(--neon-green); color: #000; text-align: center; padding: 18px; border-radius: 15px; font-family: 'Orbitron'; font-weight: bold; text-decoration: none; box-shadow: 0 0 20px rgba(57, 255, 20, 0.4); margin-bottom: var(--section-spacing); }
+
+        /* ARTÍCULOS ORIGINALES */
+        .articulos-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: var(--section-spacing); }
+        .art-card { background: var(--card-bg); border-radius: 12px; padding: 20px; text-align: center; border: 1px solid rgba(255,204,0,0.2); text-decoration: none; color: inherit; }
+        .art-card img { width: 65px; height: 65px; border-radius: 50%; margin-bottom: 12px; background: #fff; }
+        .art-card h3 { font-size: 0.9rem; margin: 0; color: var(--primary-gold); font-family: 'Orbitron'; }
+
+        /* FOOTER */
+        footer { background: var(--footer-bg); padding: 40px 15px; text-align: center; border-top: 2px solid var(--primary-gold); font-size: 0.85rem; }
+        .footer-links a { color: var(--primary-gold); text-decoration: none; margin: 0 12px; }
     </style>
 </head>
 <body>
@@ -91,136 +108,121 @@
 
     <section class="explosivos-new-section">
         <div class="exp-header">
-            <div>🔥 🎰 🏆</div>
-            <h2>ANIMALITOS EXPLOSIVOS PARA HOY</h2>
-            <div style="font-size: 0.7rem; opacity: 0.9;">WWW.TUANIMALITO.COM.VE</div>
+            <div style="font-size: 1.5rem;">🔥 🎰 🏆</div>
+            <div style="font-size: 1.1rem; letter-spacing: 1px;">ANIMALITOS EXPLOSIVOS PARA HOY</div>
         </div>
         <div class="exp-white-card">
             <div class="exp-row" id="explosivos-lista"></div>
-            <div class="sorteo-sugerido">
-                🎯 <b>Sorteo Sugerido: Lotto Activo / La Granjita</b><br>
-                <span id="sorteo-fecha-txt"></span>
-            </div>
+            <div style="margin-top: 15px; font-size: 0.75rem; border-top: 1px dashed #ccc; padding-top: 10px;" id="sorteo-txt"></div>
         </div>
     </section>
 
     <section class="oraculo-section">
-        <div class="oraculo-inner">
-            <div class="oraculo-title">ORÁCULO DE LA SUERTE</div>
-            <div class="oraculo-url">tuanimalito.com.ve</div>
-            <div id="fecha-actual" style="font-weight: bold; color: var(--navy); margin-bottom: 10px;"></div>
-            
-            <div class="oraculo-grid-main">
-                <div id="piramide-ui" class="piramide-display"></div>
-                <div class="punta-final">
-                    <div id="punta-ui" class="p-val-top"></div>
-                    <div id="final-ui" class="p-val-bottom"></div>
-                </div>
-                <div class="diamante-container" id="diamante-ui"></div>
+        <div class="oraculo-box">
+            <div class="oraculo-header">ORÁCULO DE LA SUERTE</div>
+            <div id="fecha-txt" style="font-size: 0.9rem; margin-top: 5px; color: #fff;"></div>
+            <div class="oraculo-flex">
+                <div id="piramide-ui" class="piramide-txt"></div>
+                <div class="diamante-grid" id="diamante-ui"></div>
             </div>
-
-            <div style="font-size: 0.8rem; font-weight: bold; color: #444; border-top: 1px solid #eee; padding-top: 15px; letter-spacing: 1px;">ORÁCULO DE HOY</div>
-            <div class="pronostico-container" id="pronostico-ui"></div>
+            <div style="margin-bottom: 10px; font-weight: bold; font-size: 0.9rem; font-family: 'Orbitron'; color: #fff;">PRONÓSTICO DE HOY</div>
+            <div class="oraculo-results" id="oraculo-fijos"></div>
         </div>
     </section>
 
-    <a href="https://t.me/TuAnimalitoVip" class="btn-telegram">🚀 ÚNETE AL CANAL TELEGRAM VIP</a>
+    <a href="#" class="btn-telegram">🚀 ÚNETE AL CANAL TELEGRAM VIP</a>
+
+    <div class="articulos-grid">
+        <a href="#" class="art-card"><img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/lottoactivo.webp"><h3>Lotto Activo</h3></a>
+        <a href="#" class="art-card"><img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/lagranjita.webp"><h3>La Granjita</h3></a>
+        <a href="#" class="art-card"><img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/ruletaroyal.webp"><h3>Ruleta Royal</h3></a>
+        <a href="#" class="art-card"><img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/lottorey.webp"><h3>Lotto Rey</h3></a>
+    </div>
 
 </div>
 
+<footer>
+    <div class="footer-links">
+        <a href="#">Aviso Legal</a> | <a href="#">Contacto</a> | <a href="#">Publicidad</a>
+    </div>
+    <p>&copy; 2026 <b>TuAnimalito.com.ve</b>. Todos los derechos reservados.</p>
+</footer>
+
 <script>
-    // Configuración de explosivos (Manual)
     const CONFIG_EXPLOSIVOS = [
-        { loteria: "LA GRANJITA", numero: "09" },
-        { loteria: "LOTTO ACTIVO", numero: "07", fijo: true },
-        { loteria: "RULETA ROYAL", numero: "06" }
+        { loteria: "LA GRANJITA", num: "09" },
+        { loteria: "LOTTO ACTIVO", num: "07", fijo: true },
+        { loteria: "RULETA ROYAL", num: "06" }
     ];
 
     const animales = {"0":"Delfín","00":"Ballena","1":"Carnero","2":"Toro","3":"Ciempiés","4":"Alacrán","5":"León","6":"Rana","7":"Perico","8":"Ratón","9":"Águila","10":"Tigre","11":"Gato","12":"Caballo","13":"Mono","14":"Paloma","15":"Zorro","16":"Oso","17":"Pavo","18":"Burro","19":"Chivo","20":"Cochino","21":"Gallo","22":"Camello","23":"Cebra","24":"Iguana","25":"Gallina","26":"Vaca","27":"Perro","28":"Zamuro","29":"Elefante","30":"Caimán","31":"Lapa","32":"Ardilla","33":"Pescado","34":"Venado","35":"Pájaro","36":"Culebra"};
     const urlRepo = "https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/";
 
-    function ajustar36(n) {
-        let res = Math.abs(Math.floor(n));
-        while (res > 36) res -= 36;
-        return String(res).padStart(2, '0');
-    }
-
     function init() {
-        // OBTENER FECHA ACTUAL DEL SISTEMA
         const hoy = new Date();
         const d = String(hoy.getDate()).padStart(2, '0');
         const m = String(hoy.getMonth() + 1).padStart(2, '0');
         const a = String(hoy.getFullYear());
         
-        const diasSemana = ["DOMINGO", "LUNES", "MARTES", "MIÉRCOLES", "JUEVES", "VIERNES", "SÁBADO"];
-        const mesesAnio = ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"];
+        document.getElementById('fecha-txt').innerText = hoy.toLocaleDateString();
+        document.getElementById('sorteo-txt').innerText = `🎯 Sorteo Sugerido: Lotto Activo / La Granjita\nHOY: ${d}/${m}/${a}`;
 
-        document.getElementById('fecha-actual').innerText = `${d}/${m}/${a}`;
-        document.getElementById('sorteo-fecha-txt').innerText = `HOY: ${diasSemana[hoy.getDay()]}, ${d} DE ${mesesAnio[hoy.getMonth()]} DE ${a}`;
-
-        // 1. CÁLCULO PIRÁMIDE AUTOMÁTICA
-        let base = d + m + a; 
-        let piramide = [base];
-        while(piramide[piramide.length-1].length > 1) {
-            let prev = piramide[piramide.length-1], next = "";
-            for(let i=0; i<prev.length-1; i++) next += (parseInt(prev[i]) + parseInt(prev[i+1])) % 10;
-            piramide.push(next);
+        // PIRÁMIDE
+        let pir = [d + m + a];
+        while(pir[pir.length-1].length > 1) {
+            let n = "", prev = pir[pir.length-1];
+            for(let i=0; i<prev.length-1; i++) n += (parseInt(prev[i])+parseInt(prev[i+1])) % 10;
+            pir.push(n);
         }
-        document.getElementById('piramide-ui').innerHTML = piramide.slice(0, -1).join('<br>');
-        
-        const puntaStr = piramide[piramide.length-2];
-        const finalStr = piramide[piramide.length-1];
-        document.getElementById('punta-ui').innerText = puntaStr;
-        document.getElementById('final-ui').innerText = finalStr;
+        document.getElementById('piramide-ui').innerHTML = pir.slice(0,-1).join('<br>');
 
-        // 2. CÁLCULO DIAMANTE AUTOMÁTICO
-        const c = parseInt(finalStr);
-        const p1 = parseInt(puntaStr[0]);
-        const p2 = parseInt(puntaStr[1]);
+        // DIAMANTE
+        const c = parseInt(pir[pir.length-1]);
+        const dGrid = [{v:8,r:0},{v:null},{v:7,r:0},{v:7,r:0},{v:c,r:1},{v:6,r:0},{v:0,r:0},{v:3,r:0},{v:9,r:0}];
+        document.getElementById('diamante-ui').innerHTML = dGrid.map(i => i.v===null ? '<div class="invisible"></div>' : `<div class="circulo ${i.r?'rojo':''}">${i.v}</div>`).join('');
 
-        const diamanteGrid = [
-            {v: (p1+p2)%10, red:false}, {v:null}, {v: (c+6)%10, red:false},
-            {v: (c+6)%10, red:false}, {v: c, red:true}, {v: (c+5)%10, red:false},
-            {v: (c+9)%10, red:false}, {v: (c+2)%10, red:false}, {v: (c+8)%10, red:false}
-        ];
-        document.getElementById('diamante-ui').innerHTML = diamanteGrid.map(item => 
-            item.v === null ? '<div class="d-invisible"></div>' : `<div class="d-cell ${item.red?'red':''}">${item.v}</div>`
-        ).join('');
-
-        // 3. RENDER EXPLOSIVOS
+        // EXPLOSIVOS
         const expCont = document.getElementById('explosivos-lista');
         CONFIG_EXPLOSIVOS.forEach(item => {
             expCont.innerHTML += `
                 <div class="exp-unit">
                     <div class="exp-img-wrapper">
-                        <img src="${urlRepo}${item.numero}.png" class="exp-img-main">
-                        <div class="exp-badge-num">${item.numero}</div>
+                        <img src="${urlRepo}${item.num}.png" class="exp-img-main">
+                        <div class="exp-badge-num">${item.num}</div>
                     </div>
-                    <div class="exp-name">${animales[item.numero]}</div>
+                    <div class="exp-name">${animales[item.num]}</div>
                     <div class="exp-lotto-tag ${item.fijo?'fijo':''}">${item.loteria}</div>
-                    ${item.fijo ? '<div style="color:red; font-size:8px; font-weight:bold; margin-top:2px;">🔥 EL MÁS FIJO</div>' : ''}
                 </div>`;
         });
 
-        // 4. PRONÓSTICO AUTOMÁTICO (DERIVADO DE LA PIRÁMIDE)
-        const pNum = parseInt(puntaStr);
-        const pronCont = document.getElementById('pronostico-ui');
-        [ajustar36(pNum), ajustar36(pNum+17), ajustar36(pNum-52)].forEach(n => {
-            pronCont.innerHTML += `
-                <div class="pron-item">
-                    <img src="${urlRepo}${n}.png">
-                    <span class="pron-num">${n}</span>
-                    <span class="pron-name">${animales[n]}</span>
-                </div>`;
+        // PRONÓSTICO
+        ["17", "34", "13"].forEach(n => {
+            document.getElementById('oraculo-fijos').innerHTML += `<div class="oraculo-item"><img src="${urlRepo}${n}.png"><div style="font-weight:bold">${n}</div><div style="font-size:0.6rem; text-transform:uppercase">${animales[n]}</div></div>`;
         });
 
-        // 5. CARRUSEL
+        // CARRUSEL INFINITO
         const track = document.getElementById('slider-track');
-        ["lottoactivo.webp", "lagranjita.webp", "ruletaroyal.webp", "lottorey.webp", "guacharo.webp"].forEach(img => {
+        const container = document.getElementById('slider-container');
+        const logos = ["lottoactivo.webp", "lagranjita.webp", "ruletaroyal.webp", "lottorey.webp", "guacharo.webp"];
+        [...logos, ...logos, ...logos].forEach(img => {
             track.innerHTML += `<div class="slide"><img src="${urlRepo}${img}"></div>`;
         });
-    }
 
+        let scrollSpeed = 1;
+        let active = true;
+        function animate() {
+            if(active) {
+                container.scrollLeft += scrollSpeed;
+                if(container.scrollLeft >= track.offsetWidth / 3) container.scrollLeft = 0;
+            }
+            requestAnimationFrame(animate);
+        }
+        container.addEventListener('touchstart', () => active = false);
+        container.addEventListener('mousedown', () => active = false);
+        window.addEventListener('touchend', () => { setTimeout(() => active = true, 2000); });
+        window.addEventListener('mouseup', () => { setTimeout(() => active = true, 2000); });
+        animate();
+    }
     window.onload = init;
 </script>
 </body>
