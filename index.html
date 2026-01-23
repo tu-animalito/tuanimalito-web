@@ -283,26 +283,35 @@
 </footer>
 
 <script>
+    // --- EDITA ESTA SECCIÓN CADA DÍA MANUALMENTE ---
     const CONFIG_EXPLOSIVOS = [
         { loteria: "LA GRANJITA", num: "09" },
         { loteria: "LOTTO ACTIVO", num: "07", fijo: true },
         { loteria: "RULETA ROYAL", num: "06" }
     ];
+    // ----------------------------------------------
 
     const animales = {"0":"Delfín","00":"Ballena","01":"Carnero","02":"Toro","03":"Ciempiés","04":"Alacrán","05":"León","06":"Rana","07":"Perico","08":"Ratón","09":"Águila","10":"Tigre","11":"Gato","12":"Caballo","13":"Mono","14":"Paloma","15":"Zorro","16":"Oso","17":"Pavo","18":"Burro","19":"Chivo","20":"Cochino","21":"Gallo","22":"Camello","23":"Cebra","24":"Iguana","25":"Gallina","26":"Vaca","27":"Perro","28":"Zamuro","29":"Elefante","30":"Caimán","31":"Lapa","32":"Ardilla","33":"Pescado","34":"Venado","35":"Pájaro","36":"Culebra"};
     const urlRepo = "https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/";
 
+    function reducirCruz(n) {
+        if (n < 10) return n;
+        if (n % 10 === 0) return 0;
+        let suma = String(n).split('').reduce((a, b) => parseInt(a) + parseInt(b), 0);
+        return suma >= 10 ? reducirCruz(suma) : suma;
+    }
+
     function init() {
         const hoy = new Date();
-        const d = String(hoy.getDate()).padStart(2, '0');
-        const m = String(hoy.getMonth() + 1).padStart(2, '0');
-        const a = String(hoy.getFullYear());
+        const dStr = String(hoy.getDate()).padStart(2, '0');
+        const mStr = String(hoy.getMonth() + 1).padStart(2, '0');
+        const aStr = String(hoy.getFullYear());
         
         document.getElementById('fecha-txt').innerText = hoy.toLocaleDateString();
-        document.getElementById('sorteo-txt').innerText = `🎯 Sorteo Sugerido: Lotto Activo / La Granjita | HOY: ${d}/${m}/${a}`;
+        document.getElementById('sorteo-txt').innerText = `🎯 Sorteo Sugerido: Lotto Activo / La Granjita | HOY: ${dStr}/${mStr}/${aStr}`;
 
         // PIRÁMIDE
-        let pir = [d + m + a];
+        let pir = [dStr + mStr + aStr];
         while(pir[pir.length-1].length > 1) {
             let n = "", prev = pir[pir.length-1];
             for(let i=0; i<prev.length-1; i++) n += (parseInt(prev[i])+parseInt(prev[i+1])) % 10;
@@ -310,12 +319,50 @@
         }
         document.getElementById('piramide-ui').innerHTML = pir.slice(0,-1).join('<br>');
 
-        // DIAMANTE
-        const c = parseInt(pir[pir.length-1]);
-        const dGrid = [{v:8,r:0},{v:null},{v:7,r:0},{v:7,r:0},{v:c,r:1},{v:6,r:0},{v:0,r:0},{v:3,r:0},{v:9,r:0}];
-        document.getElementById('diamante-ui').innerHTML = dGrid.map(i => i.v===null ? '<div class="invisible"></div>' : `<div class="circulo ${i.r?'rojo':''}">${i.v}</div>`).join('');
+        // LÓGICA CRUZ DE LA SUERTE
+        const d_sum = dStr.split('').reduce((a, b) => parseInt(a) + parseInt(b), 0);
+        const m_sum = mStr.split('').reduce((a, b) => parseInt(a) + parseInt(b), 0);
+        const a_sum = aStr.split('').reduce((a, b) => parseInt(a) + parseInt(b), 0);
 
-        // EXPLOSIVOS
+        const arriba = reducirCruz(d_sum);
+        const derecha = reducirCruz(m_sum + a_sum);
+        const abajo = reducirCruz(d_sum + m_sum);
+        const izquierda = reducirCruz(d_sum + m_sum + a_sum);
+
+        const esqA = reducirCruz(arriba + izquierda);
+        const esqB = reducirCruz(arriba + derecha);
+        const esqC = reducirCruz(abajo + derecha);
+        const esqD = reducirCruz(izquierda + abajo);
+
+        const cruzData = [
+            {v: esqA, r: 0}, {v: arriba, r: 0}, {v: esqB, r: 0},
+            {v: izquierda, r: 0}, {v: 0, r: 1}, {v: derecha, r: 0},
+            {v: esqD, r: 0}, {v: abajo, r: 0}, {v: esqC, r: 0}
+        ];
+        document.getElementById('diamante-ui').innerHTML = cruzData.map(i => `<div class="circulo ${i.r?'rojo':''}">${i.v}</div>`).join('');
+
+        // --- PRONÓSTICOS AUTOMÁTICOS (ORÁCULO) ---
+        // Generamos 3 números combinando los puntos de la cruz para que cambien cada día
+        const pronosticoFijos = [
+            String(arriba) + String(derecha),   // Par 1: Arriba + Derecha
+            String(izquierda) + String(abajo),   // Par 2: Izquierda + Abajo
+            String(esqB) + String(esqC)          // Par 3: Esquinitas
+        ].map(n => {
+            let num = parseInt(n) % 37; // Aseguramos que el número esté entre 0 y 36
+            return String(num).padStart(2, '0');
+        });
+
+        const oraculoCont = document.getElementById('oraculo-fijos');
+        pronosticoFijos.forEach(n => {
+            oraculoCont.innerHTML += `
+                <div class="oraculo-item">
+                    <img src="${urlRepo}${n}.png" alt="${animales[n]}">
+                    <div style="font-weight:bold">${n}</div>
+                    <div style="font-size:0.6rem; text-transform:uppercase">${animales[n]}</div>
+                </div>`;
+        });
+
+        // EXPLOSIVOS (MANUAL)
         const expCont = document.getElementById('explosivos-lista');
         CONFIG_EXPLOSIVOS.forEach(item => {
             expCont.innerHTML += `
@@ -328,11 +375,6 @@
                     <div class="exp-lotto-tag ${item.fijo?'fijo':''}">${item.loteria}</div>
                     ${item.fijo ? '<div style="color:var(--neon-red); font-size:7px; font-weight:bold; margin-top:3px;">🔥 EL MÁS FIJO</div>' : ''}
                 </div>`;
-        });
-
-        // PRONÓSTICO
-        ["17", "34", "13"].forEach(n => {
-            document.getElementById('oraculo-fijos').innerHTML += `<div class="oraculo-item"><img src="${urlRepo}${n}.png" alt="${animales[n]}"><div style="font-weight:bold">${n}</div><div style="font-size:0.6rem; text-transform:uppercase">${animales[n]}</div></div>`;
         });
 
         // CARRUSEL INFINITO
@@ -361,4 +403,5 @@
     window.onload = init;
 </script>
 </body>
-</html>
+                                          </html>
+                                          
