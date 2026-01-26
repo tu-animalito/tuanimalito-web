@@ -63,6 +63,7 @@
         .slider-track { display: flex; }
         .slide { width: 100px; flex-shrink: 0; text-align: center; padding: 0 10px; }
         .slide img { width: 75px; height: 75px; border-radius: 50%; border: 2px solid var(--primary-gold); background: #fff; pointer-events: none; }
+        .slide a { text-decoration: none; display: block; }
 
         /* ORÁCULO DINÁMICO */
         .oraculo-section { margin-bottom: var(--section-spacing); }
@@ -342,13 +343,12 @@
         document.getElementById('diamante-ui').innerHTML = cruzData.map(i => `<div class="circulo ${i.r?'rojo':''}">${i.v}</div>`).join('');
 
         // --- PRONÓSTICOS AUTOMÁTICOS (ORÁCULO) ---
-        // Generamos 3 números combinando los puntos de la cruz para que cambien cada día
         const pronosticoFijos = [
-            String(arriba) + String(derecha),   // Par 1: Arriba + Derecha
-            String(izquierda) + String(abajo),   // Par 2: Izquierda + Abajo
-            String(esqB) + String(esqC)          // Par 3: Esquinitas
+            String(arriba) + String(derecha),
+            String(izquierda) + String(abajo),
+            String(esqB) + String(esqC)
         ].map(n => {
-            let num = parseInt(n) % 37; // Aseguramos que el número esté entre 0 y 36
+            let num = parseInt(n) % 37;
             return String(num).padStart(2, '0');
         });
 
@@ -377,12 +377,26 @@
                 </div>`;
         });
 
-        // CARRUSEL INFINITO
+        // CARRUSEL INFINITO CON ENLACES
         const track = document.getElementById('slider-track');
         const container = document.getElementById('slider-container');
-        const logos = ["lottoactivo.webp", "lagranjita.webp", "ruletaroyal.webp", "lottorey.webp", "guacharo.webp"];
-        [...logos, ...logos, ...logos].forEach(img => {
-            track.innerHTML += `<div class="slide"><img src="${urlRepo}${img}" alt="Logo Lotería Animalitos"></div>`;
+        
+        const logosData = [
+            { img: "lottoactivo.webp", link: "lotto-activo.html" },
+            { img: "lagranjita.webp", link: "la-granjita.html" },
+            { img: "ruletaroyal.webp", link: "ruleta-royal.html" },
+            { img: "lottorey.webp", link: "lotto-rey.html" },
+            { img: "guacharo.webp", link: "#" }
+        ];
+
+        // Duplicamos los logos para el efecto infinito
+        [...logosData, ...logosData, ...logosData].forEach(item => {
+            track.innerHTML += `
+                <div class="slide">
+                    <a href="${item.link}">
+                        <img src="${urlRepo}${item.img}" alt="Logo Lotería Animalitos" style="pointer-events: auto;">
+                    </a>
+                </div>`;
         });
 
         let scrollSpeed = 1;
@@ -403,5 +417,4 @@
     window.onload = init;
 </script>
 </body>
-                                          </html>
-                                          
+</html>
