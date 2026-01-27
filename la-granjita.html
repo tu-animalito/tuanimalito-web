@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <link rel="shortcut icon" href="apple-touch-icon.png" type="image/x-icon">
@@ -39,17 +39,13 @@
         }
 
         h1 { font-family: 'Orbitron'; color: var(--primary-gold); font-size: 1.8rem; text-align: center; margin-bottom: 20px; }
-
-        /* Estilo para el contenedor de la Ruleta */
-        .ruleta-container {
+        
+        .img-articulo {
+            display: block;
             width: 100%;
-            display: flex;
-            justify-content: center;
-            background: rgba(0,0,0,0.3);
-            padding: 20px 0;
+            max-width: 300px;
+            margin: 0 auto 20px;
             border-radius: 15px;
-            margin-bottom: 25px;
-            border: 1px dashed var(--primary-gold);
         }
 
         .date-badge { 
@@ -75,38 +71,100 @@
         }
         
         .box-title { 
-            font-family: 'Orbitron'; color: #fff; font-size: 1.2rem; text-align: center;
-            margin-bottom: 35px; text-shadow: 2px 2px #000;
+            font-family: 'Orbitron'; 
+            color: #fff; 
+            font-size: 1.2rem; 
+            text-align: center;
+            margin-bottom: 35px; 
+            text-shadow: 2px 2px #000;
         }
 
-        .datos-flex { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px 15px; }
+        .datos-flex { 
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px 15px; 
+        }
         
         .dato-card { 
-            background: #fff; border-radius: 50%; width: 130px; height: 130px;
-            display: flex; align-items: center; justify-content: center; position: relative;
-            border: 6px solid var(--granjita-green-light); box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            background: #fff; 
+            border-radius: 50%; 
+            width: 130px; 
+            height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border: 6px solid var(--granjita-green-light);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            flex-shrink: 0;
+        }
+        
+        @media (max-width: 360px) {
+            .dato-card { width: 110px; height: 110px; }
+            .dato-card img { width: 65px; height: 65px; }
         }
 
+        .dato-card img { width: 85px; height: 85px; object-fit: contain; }
+        
         .dato-num { 
-            position: absolute; top: -8px; left: -8px; background: var(--granjita-green-dark);
-            color: white; width: 38px; height: 38px; border-radius: 50%; display: flex;
-            align-items: center; justify-content: center; font-weight: 900; font-family: 'Orbitron';
-            border: 2px solid var(--primary-gold); z-index: 10;
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            background: var(--granjita-green-dark);
+            color: white;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900; 
+            font-size: 1rem; 
+            font-family: 'Orbitron';
+            border: 2px solid var(--primary-gold);
+            z-index: 10;
         }
 
         .dato-nombre {
-            position: absolute; bottom: -15px; background: var(--granjita-green-light);
-            color: white; padding: 4px 15px; border-radius: 20px; font-size: 0.75rem;
-            font-weight: bold; text-transform: uppercase; white-space: nowrap;
+            position: absolute;
+            bottom: -15px;
+            background: var(--granjita-green-light);
+            color: white;
+            padding: 4px 15px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+            white-space: nowrap;
         }
 
         .seo-section { line-height: 1.8; color: #cbd5e1; font-size: 1rem; }
-        .seo-section h2 { color: var(--primary-gold); font-family: 'Orbitron'; font-size: 1.3rem; margin-top: 40px; border-left: 5px solid var(--granjita-green-light); padding-left: 15px; }
+        .seo-section p { text-align: justify; margin-bottom: 20px; } 
+        
+        .seo-section h2 { 
+            color: var(--primary-gold); 
+            font-family: 'Orbitron'; 
+            font-size: 1.3rem; 
+            margin-top: 40px; 
+            border-left: 5px solid var(--granjita-green-light); 
+            padding-left: 15px; 
+        }
 
         .btn-telegram { 
-            display: block; text-align: center; background: var(--neon-green); color: #000; padding: 20px; 
-            border-radius: 15px; text-decoration: none; font-family: 'Orbitron'; font-weight: bold; 
-            margin-top: 30px; box-shadow: 0 5px 20px rgba(57, 255, 20, 0.4);
+            display: block; 
+            text-align: center; 
+            background: var(--neon-green); 
+            color: #000; 
+            padding: 20px; 
+            border-radius: 15px; 
+            text-decoration: none; 
+            font-family: 'Orbitron'; 
+            font-weight: bold; 
+            margin-top: 30px; 
+            font-size: 1rem;
+            box-shadow: 0 5px 20px rgba(57, 255, 20, 0.4);
         }
 
         footer { text-align: center; padding: 30px; background: #000; margin-top: 40px; border-top: 1px solid var(--granjita-green-light); font-size: 0.8rem; }
@@ -122,19 +180,18 @@
     <article class="content-card">
         <h1>Datos de La Granjita</h1>
         
-        <div class="date-badge" id="fecha-actual">PRONÓSTICO PARA HOY</div>
+        <img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/lagranjita.webp" class="img-articulo" alt="La Granjita">
 
-        <div class="ruleta-container">
-            <iframe 
-                src="ruleta-granjita.html" 
-                style="width: 100%; max-width: 450px; height: 520px; border:none; overflow:hidden;" 
-                scrolling="no">
-            </iframe>
-        </div>
+        <div class="date-badge" id="fecha-actual">PRONÓSTICO PARA HOY</div>
 
         <section class="pronosticos-box">
             <h2 class="box-title">ANIMALITOS CALIENTES</h2>
             <div class="datos-flex">
+                <div class="dato-card">
+                    <div class="dato-num">00</div>
+                    <img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/iconos/00.png" alt="Ballena">
+                    <div class="dato-nombre">Ballena</div>
+                </div>
                 <div class="dato-card">
                     <div class="dato-num">23</div>
                     <img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/iconos/23.png" alt="Delfín">
@@ -142,18 +199,33 @@
                 </div>
                 <div class="dato-card">
                     <div class="dato-num">15</div>
-                    <img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/iconos/15.png" alt="Zorro">
+                    <img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/heads/main/iconos/15.png" alt="Zorro">
                     <div class="dato-nombre">Zorro</div>
+                </div>
+                <div class="dato-card">
+                    <div class="dato-num">04</div>
+                    <img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/heads/main/iconos/04.png" alt="Alacrán">
+                    <div class="dato-nombre">Alacrán</div>
+                </div>
+                <div class="dato-card">
+                    <div class="dato-num">32</div>
+                    <img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/heads/main/iconos/32.png" alt="Ardilla">
+                    <div class="dato-nombre">Ardilla</div>
+                </div>
+                <div class="dato-card">
+                    <div class="dato-num">10</div>
+                    <img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/heads/main/iconos/10.png" alt="Tigre">
+                    <div class="dato-nombre">Tigre</div>
                 </div>
             </div>
         </section>
 
         <section class="seo-section">
             <h2>¿Cómo ganar en La Granjita?</h2>
-            <p>Para aumentar tus posibilidades en los sorteos de La Granjita, es fundamental seguir las tendencias de los animales que más han salido en las últimas horas. Nuestros datos se actualizan diariamente basándose en cálculos de frecuencia.</p>
+            <p>Para aumentar tus posibilidades en los sorteos de La Granjita, es fundamental seguir las tendencias de los animales que más han salido en las últimas horas. Nuestros datos se actualizan diariamente basándose en cálculos de frecuencia y estadísticas de resultados anteriores.</p>
             
             <h2>Sorteos y Horarios</h2>
-            <p>Recuerda que La Granjita ofrece sorteos desde las 8:00 AM hasta las 7:00 PM. Mantente atento a nuestro oráculo para ajustar tus jugadas según el momento del día.</p>
+            <p>Recuerda que La Granjita ofrece sorteos desde las 8:00 AM hasta las 7:00 PM. Mantente atento a nuestro oráculo para ajustar tus jugadas según el momento del día y las cábalas que te ofrecemos gratuitamente.</p>
         </section>
 
         <a href="https://t.me/tu_canal" class="btn-telegram">🚀 ÚNETE AL TELEGRAM VIP</a>
@@ -165,10 +237,9 @@
 </footer>
 
 <script>
-    // Script para poner la fecha actual automáticamente
     const opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     document.getElementById('fecha-actual').innerText = new Date().toLocaleDateString('es-ES', opciones);
 </script>
 
 </body>
-</html>             
+</html>
