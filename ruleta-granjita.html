@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruleta La Granjita - Responsive</title>
+    <style>
+        :root {
+            --verde-fondo: #0b3d1d; 
+            --dorado: #d4af37;
+            --blanco: #ffffff;
+        }
+
+        body {
+            background-color: var(--verde-fondo);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            color: white;
+            overflow: hidden;
+        }
+
+        .titulo {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+
+        /* CONTENEDOR RESPONSIVE */
+        .contenedor-ruleta {
+            position: relative;
+            width: 85vw;
+            height: 85vw;
+            max-width: 360px;
+            max-height: 360px;
+            margin: 0 auto;
+        }
+
+        .marcador {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0; 
+            height: 0; 
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 30px solid var(--dorado);
+            z-index: 30;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5));
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 6px solid var(--dorado);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+            background-color: #000;
+        }
+
+        .centro {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 25%;
+            height: 25%;
+            background: radial-gradient(circle, #2a2a2a, #000);
+            border: 3px solid var(--dorado);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .centro span {
+            color: var(--dorado);
+            font-weight: bold;
+            font-size: 0.7rem;
+            line-height: 1;
+        }
+
+        .boton-girar {
+            margin-top: 25px;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #000;
+            background: var(--dorado);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.2s;
+            text-transform: uppercase;
+        }
+
+        .boton-girar:active {
+            transform: scale(0.9);
+        }
+
+        .boton-girar:disabled {
+            background: #666;
+            cursor: not-allowed;
+        }
+
+        @media (min-width: 480px) {
+            .centro span { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="titulo">DATOS DE LA GRANJITA</div>
+
+    <div class="contenedor-ruleta">
+        <div class="marcador"></div>
+        <canvas id="ruletaCanvas" width="600" height="600"></canvas>
+        <div class="centro">
+            <span>LA<br>GRANJITA</span>
+        </div>
+    </div>
+
+    <button class="boton-girar" id="btnGirar" onclick="girarRuleta()">GIRAR RULETA</button>
+
+    <script>
+        const canvas = document.getElementById('ruletaCanvas');
+        const ctx = canvas.getContext('2d');
+        const btnGirar = document.getElementById('btnGirar');
+
+        const etiquetas = ["0", "00", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36"];
+        const numSegmentos = etiquetas.length;
+        const anguloSegmento = (2 * Math.PI) / numSegmentos;
+        
+        let anguloActual = 0;
+        let estaGirando = false;
+
+        // Colores distintivos (Verde, Amarillo, Rojo, Azul)
+        const colores = ['#228B22', '#FFD700', '#D32F2F', '#1976D2', '#FF8F00', '#7B1FA2'];
+
+        function dibujarRuleta() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const radio = canvas.width / 2;
+
+            for (let i = 0; i < numSegmentos; i++) {
+                const anguloInicio = anguloActual + (i * anguloSegmento);
+                
+                ctx.beginPath();
+                ctx.moveTo(radio, radio);
+                ctx.arc(radio, radio, radio, anguloInicio, anguloInicio + anguloSegmento);
+                ctx.fillStyle = colores[i % colores.length];
+                ctx.fill();
+                ctx.strokeStyle = "rgba(255,255,255,0.2)";
+                ctx.stroke();
+
+                // Números
+                ctx.save();
+                ctx.translate(radio, radio);
+                ctx.rotate(anguloInicio + anguloSegmento / 2);
+                ctx.textAlign = "right";
+                ctx.fillStyle = "white";
+                ctx.font = "bold 22px Arial";
+                ctx.fillText(etiquetas[i], radio - 35, 10);
+                ctx.restore();
+            }
+        }
+
+        function girarRuleta() {
+            if (estaGirando) return;
+            estaGirando = true;
+            btnGirar.disabled = true;
+
+            const girosExtra = Math.random() * 5 + 5;
+            const anguloFinal = girosExtra * 2 * Math.PI;
+            const duracion = 4000;
+            let tiempoInicio = null;
+
+            function animacion(tiempoActual) {
+                if (!tiempoInicio) tiempoInicio = tiempoActual;
+                const progreso = tiempoActual - tiempoInicio;
+                const t = Math.min(progreso / duracion, 1);
+                
+                // Ease Out Cubic
+                const curva = 1 - Math.pow(1 - t, 3);
+                anguloActual = curva * anguloFinal;
+
+                dibujarRuleta();
+
+                if (progreso < duracion) {
+                    requestAnimationFrame(animacion);
+                } else {
+                    estaGirando = false;
+                    btnGirar.disabled = false;
+                }
+            }
+            requestAnimationFrame(animacion);
+        }
+
+        dibujarRuleta();
+    </script>
+</body>
+</html>
