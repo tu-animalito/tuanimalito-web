@@ -50,20 +50,47 @@
         header { text-align: center; padding: 25px; background: #000; border-bottom: 3px solid var(--primary-gold); margin-bottom: 20px; }
         .logo-main { width: 100%; max-width: 280px; height: auto; }
 
-        /* CARRUSEL INFINITO */
-        .slider-wrapper { 
-            background: #111133; padding: 20px 0; border-top: 1px solid var(--primary-gold); border-bottom: 1px solid var(--primary-gold);
-            margin-bottom: var(--section-spacing); overflow: hidden; position: relative;
+        /* CINTILLO DE NOTICIAS (REEMPLAZA AL CARRUSEL) */
+        .news-ticker-wrapper {
+            background: #111133;
+            border-top: 1px solid var(--primary-gold);
+            border-bottom: 1px solid var(--primary-gold);
+            margin-bottom: var(--section-spacing);
+            padding: 10px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
         }
-        .slider-container {
-            display: flex; overflow-x: auto; scrollbar-width: none; cursor: grab;
-            -webkit-overflow-scrolling: touch;
+
+        .ticker-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: ticker 25s linear infinite;
         }
-        .slider-container::-webkit-scrollbar { display: none; }
-        .slider-track { display: flex; }
-        .slide { width: 100px; flex-shrink: 0; text-align: center; padding: 0 10px; }
-        .slide img { width: 75px; height: 75px; border-radius: 50%; border: 2px solid var(--primary-gold); background: #fff; pointer-events: none; }
-        .slide a { text-decoration: none; display: block; }
+
+        .ticker-item {
+            display: inline-block;
+            padding: 0 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .ticker-item span {
+            color: var(--primary-gold);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+
+        .news-ticker-wrapper:hover .ticker-content {
+            animation-play-state: paused;
+        }
 
         /* ORÁCULO DINÁMICO */
         .oraculo-section { margin-bottom: var(--section-spacing); }
@@ -214,9 +241,15 @@
 
 <div class="container">
 
-    <div class="slider-wrapper">
-        <div class="slider-container" id="slider-container">
-            <div class="slider-track" id="slider-track"></div>
+    <div class="news-ticker-wrapper">
+        <div class="ticker-content">
+            <div class="ticker-item"><span>LOTTO ACTIVO:</span> Datos actualizados para el sorteo de hoy</div>
+            <div class="ticker-item"><span>LA GRANJITA:</span> Revisa la pirámide numérica explosiva</div>
+            <div class="ticker-item"><span>SÍGUENOS:</span> Únete a nuestro canal VIP de Telegram</div>
+            <div class="ticker-item"><span>RULETA ROYAL:</span> Nuevos pronósticos disponibles</div>
+            <div class="ticker-item"><span>TIP:</span> Juega con responsabilidad y mucha suerte</div>
+            <div class="ticker-item"><span>LOTTO ACTIVO:</span> Datos actualizados para el sorteo de hoy</div>
+            <div class="ticker-item"><span>LA GRANJITA:</span> Revisa la pirámide numérica explosiva</div>
         </div>
     </div>
 
@@ -376,43 +409,6 @@
                     ${item.fijo ? '<div style="color:var(--neon-red); font-size:7px; font-weight:bold; margin-top:3px;">🔥 EL MÁS FIJO</div>' : ''}
                 </div>`;
         });
-
-        // CARRUSEL INFINITO CON ENLACES
-        const track = document.getElementById('slider-track');
-        const container = document.getElementById('slider-container');
-        
-        const logosData = [
-            { img: "lotto-activo-logo.webp", link: "lotto-activo.html" },
-            { img: "la-granjita-logo.webp", link: "la-granjita.html" },
-            { img: "ruleta-royal-logo.webp", link: "ruleta-royal.html" },
-            { img: "lotto-rey-logo.webp", link: "lotto-rey.html" },
-            { img: "guacharo.webp", link: "#" }
-        ];
-
-        // Duplicamos los logos para el efecto infinito
-        [...logosData, ...logosData, ...logosData].forEach(item => {
-            track.innerHTML += `
-                <div class="slide">
-                    <a href="${item.link}">
-                        <img src="${urlRepo}${item.img}" alt="Logo Lotería Animalitos" style="pointer-events: auto;">
-                    </a>
-                </div>`;
-        });
-
-        let scrollSpeed = 1;
-        let active = true;
-        function animate() {
-            if(active) {
-                container.scrollLeft += scrollSpeed;
-                if(container.scrollLeft >= track.offsetWidth / 3) container.scrollLeft = 0;
-            }
-            requestAnimationFrame(animate);
-        }
-        container.addEventListener('touchstart', () => active = false);
-        container.addEventListener('mousedown', () => active = false);
-        window.addEventListener('touchend', () => { setTimeout(() => active = true, 2000); });
-        window.addEventListener('mouseup', () => { setTimeout(() => active = true, 2000); });
-        animate();
     }
     window.onload = init;
 </script>
