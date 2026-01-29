@@ -322,7 +322,7 @@
 
     function intentarSiguiente(img, num, index) {
         if (index < formatos.length) {
-            img.src = `${urlRepo}${num}.${formatos[index]}`;
+            img.src = `${urlRepo}t${num}.${formatos[index]}`;
             img.onerror = () => intentarSiguiente(img, num, index + 1);
         } else {
             img.src = `${urlRepo}tu-animalito.jpg`; // Imagen por defecto
@@ -331,7 +331,7 @@
     }
 
     function getImgHtml(num, extraClass = "") {
-        return `<img src="${urlRepo}${num}.webp" 
+        return `<img src="${urlRepo}t${num}.webp" 
                      class="${extraClass}" 
                      alt="${animales[num]}" 
                      onerror="intentarSiguiente(this, '${num}', 1)">`;
