@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Animalitos Oficial | Números y Figuras Actualizadas</title>
+    <meta name="description" content="Consulta la tabla completa de animalitos. Desde el 0 Delfín hasta el 36 Culebra. Conoce el significado de cada número para tus sorteos favoritos.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-gold: #d4af37;
+            --dark-bg: #0d0d0d;
+            --card-bg: #1a1a1a;
+            --accent-green: #39ff14;
+            --text-gray: #cbd5e1;
+        }
+
+        body { 
+            margin: 0; 
+            font-family: 'Roboto', sans-serif; 
+            background-color: var(--dark-bg); 
+            color: #f0f0f0; 
+            line-height: 1.6;
+        }
+
+        .container { max-width: 900px; margin: auto; padding: 20px; }
+
+        header { text-align: center; padding: 40px 20px; }
+        h1 { font-family: 'Orbitron'; color: var(--primary-gold); font-size: 2rem; margin-bottom: 10px; }
+        .intro-text { color: var(--text-gray); max-width: 700px; margin: 0 auto 30px; text-align: center; }
+
+        /* Estilo de la Tabla/Grid */
+        .animal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .animal-item {
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .animal-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-gold);
+            background: #252525;
+        }
+
+        .img-container {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 10px;
+            background: #fff;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--primary-gold);
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .animal-num {
+            display: block;
+            font-family: 'Orbitron';
+            color: var(--primary-gold);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .animal-name {
+            display: block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        /* SEO Section */
+        .seo-content {
+            margin-top: 50px;
+            background: rgba(255,255,255,0.03);
+            padding: 30px;
+            border-radius: 20px;
+            border-left: 4px solid var(--primary-gold);
+        }
+
+        .seo-content h2 { font-family: 'Orbitron'; color: var(--primary-gold); font-size: 1.4rem; }
+
+        @media (max-width: 480px) {
+            .animal-grid { grid-template-columns: repeat(2, 1fr); }
+            h1 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Tabla de Animalitos</h1>
+        <p class="intro-text">
+            Explora nuestra lista completa y actualizada. Cada número representa una figura clave en la ruleta. 
+            Utiliza esta guía para identificar tus jugadas y conocer la secuencia oficial de los sorteos más populares.
+        </p>
+    </header>
+
+    <div class="animal-grid" id="main-grid">
+        </div>
+
+    <section class="seo-content">
+        <h2>¿Cómo se organiza la tabla de animalitos?</h2>
+        <p>
+            La tabla tradicional de animalitos se compone de figuras numeradas que van desde el <strong>0 (Delfín)</strong> y el <strong>00 (Ballena)</strong>, seguidas por una secuencia del 1 al 36. Es importante notar que, dependiendo del sorteo, algunas figuras pueden variar, pero en nuestra tabla exclusiva, el número <strong>35 representa a la Jirafa</strong> y el <strong>36 a la Culebra</strong>.
+        </p>
+        <p>
+            Entender esta organización es vital para los seguidores de la estadística y los pronósticos, ya que permite identificar ciclos y tendencias dentro de la ruleta de manera mucho más efectiva.
+        </p>
+    </section>
+</div>
+
+<script>
+    const urlRepo = "https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/";
+    
+    // Lista completa según tus especificaciones
+    const listaAnimales = [
+        { n: "0", name: "Delfín" },
+        { n: "00", name: "Ballena" },
+        { n: "01", name: "Carnero" },
+        { n: "02", name: "Toro" },
+        { n: "03", name: "Ciempiés" },
+        { n: "04", name: "Alacrán" },
+        { n: "05", name: "León" },
+        { n: "06", name: "Rana" },
+        { n: "07", name: "Perico" },
+        { n: "08", name: "Ratón" },
+        { n: "09", name: "Águila" },
+        { n: "10", name: "Tigre" },
+        { n: "11", name: "Gato" },
+        { n: "12", name: "Caballo" },
+        { n: "13", name: "Mono" },
+        { n: "14", name: "Paloma" },
+        { n: "15", name: "Zorro" },
+        { n: "16", name: "Oso" },
+        { n: "17", name: "Pavo" },
+        { n: "18", name: "Burro" },
+        { n: "19", name: "Chivo" },
+        { n: "20", name: "Cochino" },
+        { n: "21", name: "Gallo" },
+        { n: "22", name: "Camello" },
+        { n: "23", name: "Cebra" },
+        { n: "24", name: "Iguana" },
+        { n: "25", name: "Gallina" },
+        { n: "26", name: "Vaca" },
+        { n: "27", name: "Perro" },
+        { n: "28", name: "Zamuro" },
+        { n: "29", name: "Elefante" },
+        { n: "30", name: "Caimán" },
+        { n: "31", name: "Lapa" },
+        { n: "32", name: "Ardilla" },
+        { n: "33", name: "Pescado" },
+        { n: "34", name: "Venado" },
+        { n: "35", name: "Jirafa" },
+        { n: "36", name: "Culebra" }
+    ];
+
+    const grid = document.getElementById('main-grid');
+
+    listaAnimales.forEach(ani => {
+        const item = document.createElement('div');
+        item.className = 'animal-item';
+        
+        // Lógica de imagen: usa el prefijo 't' que ya tienes en tu GitHub
+        const imgSrc = `${urlRepo}t${ani.n}.webp`;
+
+        item.innerHTML = `
+            <div class="img-container">
+                <img src="${imgSrc}" alt="${ani.name}" onerror="this.src='${urlRepo}tu-animalito.jpg'">
+            </div>
+            <span class="animal-num">${ani.n}</span>
+            <span class="animal-name">${ani.name}</span>
+        `;
+        grid.appendChild(item);
+    });
+</script>
+
+</body>
+</html>
+
