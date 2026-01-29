@@ -63,25 +63,29 @@
         .dato-card { 
             background: #fff; border-radius: 50%; width: 130px; height: 130px; display: flex; align-items: center; justify-content: center;
             position: relative; border: 6px solid var(--royal-red); box-shadow: 0 10px 20px rgba(0,0,0,0.5); flex-shrink: 0;
+            /* ACTUALIZACIÓN: Recorte perfecto circular */
+            overflow: hidden; 
         }
         
         @media (max-width: 360px) {
             .dato-card { width: 110px; height: 110px; }
-            .dato-card img { width: 65px; height: 65px; }
+            .dato-card img { width: 75px; height: 75px; }
         }
 
-        .dato-card img { width: 85px; height: 85px; object-fit: contain; }
+        /* ACTUALIZACIÓN: Ajuste de tamaño para que no choque con bordes */
+        .dato-card img { width: 80%; height: 80%; object-fit: contain; }
         
         .dato-num { 
-            position: absolute; top: -8px; left: -8px; background: #000; color: var(--royal-gold);
+            position: absolute; top: 0; left: 0; background: #000; color: var(--royal-gold);
             width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
             font-weight: 900; font-size: 1rem; font-family: 'Orbitron'; border: 2px solid var(--royal-gold); z-index: 10;
         }
 
         .dato-nombre {
-            position: absolute; bottom: -15px; background: var(--royal-red); color: white; padding: 4px 15px;
+            position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); 
+            background: var(--royal-red); color: white; padding: 4px 15px;
             border-radius: 20px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.4); white-space: nowrap;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4); white-space: nowrap; z-index: 10;
         }
 
         .internal-link-card {
@@ -185,7 +189,7 @@
         
         DATOS_HOY.forEach(num => {
             let n = num.toString();
-            if (n === "-") return; // Ignora los guiones si no hay dato
+            if (n === "-") return; 
             
             if (n.length === 1 && n !== "0") n = "0" + n;
             
