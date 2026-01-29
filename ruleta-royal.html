@@ -63,28 +63,30 @@
         .dato-card { 
             background: #fff; border-radius: 50%; width: 130px; height: 130px; display: flex; align-items: center; justify-content: center;
             position: relative; border: 6px solid var(--royal-red); box-shadow: 0 10px 20px rgba(0,0,0,0.5); flex-shrink: 0;
-            /* ACTUALIZACIÓN: Recorte perfecto circular */
-            overflow: hidden; 
+            overflow: hidden; /* Mantiene el contenido recortado al círculo */
         }
         
         @media (max-width: 360px) {
             .dato-card { width: 110px; height: 110px; }
-            .dato-card img { width: 75px; height: 75px; }
         }
 
-        /* ACTUALIZACIÓN: Ajuste de tamaño para que no choque con bordes */
-        .dato-card img { width: 80%; height: 80%; object-fit: contain; }
+        .dato-card img { width: 100%; height: 100%; object-fit: cover; }
         
         .dato-num { 
-            position: absolute; top: 0; left: 0; background: #000; color: var(--royal-gold);
-            width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-weight: 900; font-size: 1rem; font-family: 'Orbitron'; border: 2px solid var(--royal-gold); z-index: 10;
+            position: absolute; 
+            top: 5px; /* Ajustado para estar dentro del círculo */
+            left: 5px; /* Ajustado para estar dentro del círculo */
+            background: #000; color: var(--royal-gold);
+            width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-weight: 900; font-size: 0.9rem; font-family: 'Orbitron'; border: 2px solid var(--royal-gold); z-index: 10;
         }
 
         .dato-nombre {
-            position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); 
-            background: var(--royal-red); color: white; padding: 4px 15px;
-            border-radius: 20px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;
+            position: absolute; 
+            bottom: 8px; /* Ajustado para estar dentro del círculo */
+            left: 50%; transform: translateX(-50%); 
+            background: var(--royal-red); color: white; padding: 2px 12px;
+            border-radius: 20px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase;
             box-shadow: 0 4px 8px rgba(0,0,0,0.4); white-space: nowrap; z-index: 10;
         }
 
