@@ -15,6 +15,7 @@
             --card-bg: #1a1a1a;
             --accent-green: #39ff14;
             --text-gray: #cbd5e1;
+            --royal-purple: #4b0082;
         }
 
         body { 
@@ -25,9 +26,18 @@
             line-height: 1.6;
         }
 
+        /* Cabecera integrada */
+        header.site-header { 
+            text-align: center; 
+            padding: 25px; 
+            background: #000; 
+            border-bottom: 3px solid var(--primary-gold); 
+        }
+        .logo-nav { width: 150px; }
+
         .container { max-width: 900px; margin: auto; padding: 20px; }
 
-        header { text-align: center; padding: 40px 20px; }
+        .main-title-box { text-align: center; padding: 40px 20px; }
         h1 { font-family: 'Orbitron'; color: var(--primary-gold); font-size: 2rem; margin-bottom: 10px; }
         .intro-text { color: var(--text-gray); max-width: 700px; margin: 0 auto 30px; text-align: center; }
 
@@ -87,6 +97,33 @@
             margin-top: 5px;
         }
 
+        /* Sección Royal */
+        .royal-box {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d004d 100%);
+            border: 2px solid var(--primary-gold);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        .royal-title { font-family: 'Orbitron'; color: var(--primary-gold); margin-bottom: 20px; font-size: 1.2rem; }
+
+        /* Botón Volver */
+        .btn-back {
+            display: block;
+            width: fit-content;
+            margin: 30px auto;
+            background: var(--primary-gold);
+            color: #000;
+            padding: 12px 25px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-family: 'Orbitron';
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn-back:hover { transform: scale(1.05); background: #fff; }
+
         /* SEO Section */
         .seo-content {
             margin-top: 50px;
@@ -106,17 +143,44 @@
 </head>
 <body>
 
+<header class="site-header">
+    <a href="/"><img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/tu-animalito.jpg" class="logo-nav" alt="Tu Animalito"></a>
+</header>
+
 <div class="container">
-    <header>
+    <div class="main-title-box">
         <h1>Tabla de Animalitos</h1>
         <p class="intro-text">
             Explora nuestra lista completa y actualizada. Cada número representa una figura clave en la ruleta. 
             Utiliza esta guía para identificar tus jugadas y conocer la secuencia oficial de los sorteos más populares.
         </p>
-    </header>
+    </div>
 
     <div class="animal-grid" id="main-grid">
         </div>
+
+    <div class="royal-box">
+        <div class="royal-title">👑 VARIANTES RULETA ROYAL 👑</div>
+        <div class="animal-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 400px; margin: auto;">
+            <div class="animal-item">
+                <div class="img-container">
+                    <img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/tr0.webp" alt="Tiburón" onerror="this.src='https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/tu-animalito.jpg'">
+                </div>
+                <span class="animal-num">0</span>
+                <span class="animal-name">Tiburón</span>
+            </div>
+            <div class="animal-item">
+                <div class="img-container">
+                    <img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/tr35.webp" alt="Pantera" onerror="this.src='https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/tu-animalito.jpg'">
+                </div>
+                <span class="animal-num">35</span>
+                <span class="animal-name">Pantera</span>
+            </div>
+        </div>
+        <p style="font-size: 0.8rem; margin-top: 15px; color: var(--text-gray);">* Estas figuras sustituyen al Delfín y la Jirafa en sorteos especiales de Ruleta Royal.</p>
+    </div>
+
+    <a href="/" class="btn-back">🏰 VOLVER AL INICIO 🏰</a>
 
     <section class="seo-content">
         <h2>¿Cómo se organiza la tabla de animalitos?</h2>
@@ -132,7 +196,6 @@
 <script>
     const urlRepo = "https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/";
     
-    // Lista completa según tus especificaciones
     const listaAnimales = [
         { n: "0", name: "Delfín" },
         { n: "00", name: "Ballena" },
@@ -179,8 +242,6 @@
     listaAnimales.forEach(ani => {
         const item = document.createElement('div');
         item.className = 'animal-item';
-        
-        // Lógica de imagen: usa el prefijo 't' que ya tienes en tu GitHub
         const imgSrc = `${urlRepo}t${ani.n}.webp`;
 
         item.innerHTML = `
@@ -196,4 +257,3 @@
 
 </body>
 </html>
-
