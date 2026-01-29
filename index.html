@@ -50,7 +50,7 @@
         header { text-align: center; padding: 25px; background: #000; border-bottom: 3px solid var(--primary-gold); margin-bottom: 20px; }
         .logo-main { width: 100%; max-width: 280px; height: auto; }
 
-        /* CINTILLO DE NOTICIAS (REEMPLAZA AL CARRUSEL) */
+        /* CINTILLO DE NOTICIAS */
         .news-ticker-wrapper {
             background: #111133;
             border-top: 1px solid var(--primary-gold);
@@ -222,7 +222,6 @@
             border-radius: 20px;
         }
 
-        /* Colores de identidad */
         .art-activo { border-bottom: 3px solid #0044cc; }
         .art-granjita { border-bottom: 3px solid #008f39; }
         .art-royal { border-bottom: 3px solid #c40000; }
@@ -317,16 +316,35 @@
 </footer>
 
 <script>
-    // --- EDITA ESTA SECCIÓN CADA DÍA MANUALMENTE ---
+    // --- LÓGICA DE CARGA INTELIGENTE DE IMÁGENES ---
+    const urlRepo = "https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/";
+    const formatos = ['webp', 'png', 'jpg'];
+
+    function intentarSiguiente(img, num, index) {
+        if (index < formatos.length) {
+            img.src = `${urlRepo}${num}.${formatos[index]}`;
+            img.onerror = () => intentarSiguiente(img, num, index + 1);
+        } else {
+            img.src = `${urlRepo}tu-animalito.jpg`; // Imagen por defecto
+            img.onerror = null;
+        }
+    }
+
+    function getImgHtml(num, extraClass = "") {
+        return `<img src="${urlRepo}${num}.webp" 
+                     class="${extraClass}" 
+                     alt="${animales[num]}" 
+                     onerror="intentarSiguiente(this, '${num}', 1)">`;
+    }
+
+    // --- CONFIGURACIÓN DIARIA ---
     const CONFIG_EXPLOSIVOS = [
         { loteria: "LA GRANJITA", num: "04" },
         { loteria: "LOTTO ACTIVO", num: "00", fijo: true },
         { loteria: "RULETA ROYAL", num: "06" }
     ];
-    // ----------------------------------------------
 
     const animales = {"0":"Delfín","00":"Ballena","01":"Carnero","02":"Toro","03":"Ciempiés","04":"Alacrán","05":"León","06":"Rana","07":"Perico","08":"Ratón","09":"Águila","10":"Tigre","11":"Gato","12":"Caballo","13":"Mono","14":"Paloma","15":"Zorro","16":"Oso","17":"Pavo","18":"Burro","19":"Chivo","20":"Cochino","21":"Gallo","22":"Camello","23":"Cebra","24":"Iguana","25":"Gallina","26":"Vaca","27":"Perro","28":"Zamuro","29":"Elefante","30":"Caimán","31":"Lapa","32":"Ardilla","33":"Pescado","34":"Venado","35":"Pájaro","36":"Culebra"};
-    const urlRepo = "https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/";
 
     function reducirCruz(n) {
         if (n < 10) return n;
@@ -389,7 +407,7 @@
         pronosticoFijos.forEach(n => {
             oraculoCont.innerHTML += `
                 <div class="oraculo-item">
-                    <img src="${urlRepo}${n}.png" alt="${animales[n]}">
+                    ${getImgHtml(n)}
                     <div style="font-weight:bold">${n}</div>
                     <div style="font-size:0.6rem; text-transform:uppercase">${animales[n]}</div>
                 </div>`;
@@ -401,7 +419,7 @@
             expCont.innerHTML += `
                 <div class="exp-unit">
                     <div class="exp-img-wrapper">
-                        <img src="${urlRepo}${item.num}.png" class="exp-img-main" alt="Dato de animalito ${animales[item.num]}">
+                        ${getImgHtml(item.num, "exp-img-main")}
                         <div class="exp-badge-num">${item.num}</div>
                     </div>
                     <div class="exp-name">${animales[item.num]}</div>
