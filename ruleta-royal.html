@@ -1,4 +1,4 @@
-            <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <link rel="shortcut icon" href="apple-touch-icon.png" type="image/x-icon">
@@ -161,10 +161,19 @@
 
 <script>
     const DATOS_HOY = ["03", "06", "08", "36", "-", "-"];
-    
-    // Diccionario sin Ballena (00) y con 0 (Tiburón) / 35 (Pantera)
     const animales = {"0":"Tiburón","01":"Carnero","02":"Toro","03":"Ciempiés","04":"Alacrán","05":"León","06":"Rana","07":"Perico","08":"Ratón","09":"Águila","10":"Tigre","11":"Gato","12":"Caballo","13":"Mono","14":"Paloma","15":"Zorro","16":"Oso","17":"Pavo","18":"Burro","19":"Chivo","20":"Cochino","21":"Gallo","22":"Camello","23":"Cebra","24":"Iguana","25":"Gallina","26":"Vaca","27":"Perro","28":"Zamuro","29":"Elefante","30":"Caimán","31":"Lapa","32":"Ardilla","33":"Pescado","34":"Venado","35":"Pantera","36":"Culebra"};
     const urlRepo = "https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/";
+    const formatos = ['webp', 'png', 'jpg'];
+
+    function intentarSiguiente(img, nombreArchivo, index) {
+        if (index < formatos.length) {
+            img.src = `${urlRepo}${nombreArchivo}.${formatos[index]}`;
+            img.onerror = () => intentarSiguiente(img, nombreArchivo, index + 1);
+        } else {
+            img.src = `${urlRepo}tu-animalito.jpg`;
+            img.onerror = null;
+        }
+    }
 
     function init() {
         const hoy = new Date();
@@ -176,19 +185,21 @@
         
         DATOS_HOY.forEach(num => {
             let n = num.toString();
-            // Formateo a dos dígitos para todo excepto el 0
+            if (n === "-") return; // Ignora los guiones si no hay dato
+            
             if (n.length === 1 && n !== "0") n = "0" + n;
             
-            // Selección de imagen r0, r35 o estándar
-            let imgName = n;
-            if (n === "0") imgName = "r0";
-            if (n === "35") imgName = "r35";
+            let imgBase = n;
+            if (n === "0") imgBase = "r0";
+            if (n === "35") imgBase = "r35";
 
             if(animales[n]) {
                 container.innerHTML += `
                     <div class="dato-card">
                         <span class="dato-num">${n}</span>
-                        <img src="${urlRepo}${imgName}.png" alt="${animales[n]}">
+                        <img src="${urlRepo}${imgBase}.webp" 
+                             alt="${animales[n]}" 
+                             onerror="intentarSiguiente(this, '${imgBase}', 1)">
                         <span class="dato-nombre">${animales[n]}</span>
                     </div>`;
             }
