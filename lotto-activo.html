@@ -24,7 +24,6 @@
 
         body { margin: 0; font-family: 'Roboto', sans-serif; background-color: var(--dark-bg); color: #e6edf3; overflow-x: hidden; }
         
-        /* Contenedor responsivo: ancho para PC y móvil */
         .container { 
             max-width: 800px; 
             margin: auto; 
@@ -67,7 +66,6 @@
             text-transform: uppercase;
         }
 
-        /* CAJÓN DE PRONÓSTICOS: FLEXBOX PARA GARANTIZAR LOS 6 */
         .pronosticos-box {
             background: radial-gradient(circle, #0044cc 0%, #001a4d 100%);
             border: 3px solid var(--lotto-orange);
@@ -86,12 +84,11 @@
             text-shadow: 2px 2px #000;
         }
 
-        /* Ajuste de los 6 elementos */
         .datos-flex { 
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 40px 15px; /* Espacio vertical para que no choquen los nombres */
+            gap: 40px 15px; 
         }
         
         .dato-card { 
@@ -105,31 +102,30 @@
             position: relative;
             border: 6px solid var(--lotto-orange);
             box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-            flex-shrink: 0; /* Evita que se encojan */
+            flex-shrink: 0;
+            overflow: hidden; /* ACTUALIZACIÓN: Recorte circular */
         }
         
-        /* En móviles muy pequeños, reducimos un poco el círculo */
         @media (max-width: 360px) {
             .dato-card { width: 110px; height: 110px; }
-            .dato-card img { width: 65px; height: 65px; }
         }
 
-        .dato-card img { width: 85px; height: 85px; object-fit: contain; }
+        .dato-card img { width: 100%; height: 100%; object-fit: cover; }
         
         .dato-num { 
             position: absolute;
-            top: -8px;
-            left: -8px;
+            top: 5px; /* ACTUALIZACIÓN: Posición interna */
+            left: 5px; /* ACTUALIZACIÓN: Posición interna */
             background: var(--lotto-blue);
             color: white;
-            width: 38px;
-            height: 38px;
+            width: 34px;
+            height: 34px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 900; 
-            font-size: 1rem; 
+            font-size: 0.9rem; 
             font-family: 'Orbitron';
             border: 2px solid white;
             z-index: 10;
@@ -137,16 +133,19 @@
 
         .dato-nombre {
             position: absolute;
-            bottom: -15px;
+            bottom: 8px; /* ACTUALIZACIÓN: Posición interna */
+            left: 50%;
+            transform: translateX(-50%);
             background: var(--lotto-orange);
             color: white;
-            padding: 4px 15px;
+            padding: 2px 12px;
             border-radius: 20px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: bold;
             text-transform: uppercase;
             box-shadow: 0 4px 8px rgba(0,0,0,0.4);
             white-space: nowrap;
+            z-index: 10;
         }
 
         .btn-switch {
@@ -167,7 +166,6 @@
         }
         .btn-switch:hover { transform: scale(1.02); filter: brightness(1.1); }
 
-        /* SECCIONES DE TEXTO ORIGINAL */
         .seo-section { line-height: 1.8; color: #cbd5e1; font-size: 1rem; }
         .seo-section p { text-align: justify; margin-bottom: 20px; } 
         
@@ -226,7 +224,7 @@
         <div class="pronosticos-box">
             <div class="box-title">🧡 PRONÓSTICOS DE HOY (6 FIJOS) 💙</div>
             <div class="datos-flex" id="grid-pronosticos">
-                </div>
+            </div>
         </div>
 
         <a href="la-granjita.html" class="btn-switch">
@@ -258,11 +256,20 @@
 </div>
 
 <script>
-    // LISTA DE 6 ANIMALITOS (FIJOS)
-    const DATOS_HOY = ["0", "00", "04", "-", "-", "-"];
-    
+    const DATOS_HOY = ["0", "00", "04", "12", "25", "36"];
     const animales = {"0":"Delfín","00":"Ballena","01":"Carnero","02":"Toro","03":"Ciempiés","04":"Alacrán","05":"León","06":"Rana","07":"Perico","08":"Ratón","09":"Águila","10":"Tigre","11":"Gato","12":"Caballo","13":"Mono","14":"Paloma","15":"Zorro","16":"Oso","17":"Pavo","18":"Burro","19":"Chivo","20":"Cochino","21":"Gallo","22":"Camello","23":"Cebra","24":"Iguana","25":"Gallina","26":"Vaca","27":"Perro","28":"Zamuro","29":"Elefante","30":"Caimán","31":"Lapa","32":"Ardilla","33":"Pescado","34":"Venado","35":"Pájaro","36":"Culebra"};
     const urlRepo = "https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/";
+    const formatos = ['webp', 'png', 'jpg'];
+
+    function intentarSiguiente(img, nombreArchivo, index) {
+        if (index < formatos.length) {
+            img.src = `${urlRepo}${nombreArchivo}.${formatos[index]}`;
+            img.onerror = () => intentarSiguiente(img, nombreArchivo, index + 1);
+        } else {
+            img.src = `${urlRepo}tu-animalito.jpg`;
+            img.onerror = null;
+        }
+    }
 
     function init() {
         const hoy = new Date();
@@ -273,12 +280,16 @@
         container.innerHTML = ""; 
         
         DATOS_HOY.forEach(num => {
-            if(animales[num]) {
+            let n = num.toString();
+            if (n === "-") return;
+            if(animales[n]) {
                 container.innerHTML += `
                     <div class="dato-card">
-                        <span class="dato-num">${num}</span>
-                        <img src="${urlRepo}${num}.png" alt="${animales[num]}">
-                        <span class="dato-nombre">${animales[num]}</span>
+                        <span class="dato-num">${n}</span>
+                        <img src="${urlRepo}${n}.webp" 
+                             alt="${animales[n]}" 
+                             onerror="intentarSiguiente(this, '${n}', 1)">
+                        <span class="dato-nombre">${animales[n]}</span>
                     </div>`;
             }
         });
