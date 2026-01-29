@@ -51,6 +51,7 @@
             max-width: 300px;
             margin: 0 auto 20px;
             border-radius: 15px;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.1)); /* Ajuste para fondo oscuro */
         }
 
         .date-badge { 
@@ -103,7 +104,7 @@
             border: 6px solid var(--lotto-orange);
             box-shadow: 0 10px 20px rgba(0,0,0,0.5);
             flex-shrink: 0;
-            overflow: hidden; /* ACTUALIZACIÓN: Recorte circular */
+            overflow: hidden;
         }
         
         @media (max-width: 360px) {
@@ -114,8 +115,8 @@
         
         .dato-num { 
             position: absolute;
-            top: 5px; /* ACTUALIZACIÓN: Posición interna */
-            left: 5px; /* ACTUALIZACIÓN: Posición interna */
+            top: 5px; 
+            left: 5px; 
             background: var(--lotto-blue);
             color: white;
             width: 34px;
@@ -133,7 +134,7 @@
 
         .dato-nombre {
             position: absolute;
-            bottom: 8px; /* ACTUALIZACIÓN: Posición interna */
+            bottom: 8px; 
             left: 50%;
             transform: translateX(-50%);
             background: var(--lotto-orange);
@@ -213,7 +214,7 @@
     <article class="content-card">
         <h1>Datos de Lotto Activo</h1>
         
-        <img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/lottoactivo.webp" alt="Lotto Activo Oficial" class="img-articulo">
+        <img src="https://raw.githubusercontent.com/tu-animalito/Animalitos/refs/heads/main/logo-lotto-activo.webp" alt="Lotto Activo Oficial" class="img-articulo">
 
         <div class="date-badge" id="current-date">Actualizado hoy</div>
 
@@ -263,7 +264,8 @@
 
     function intentarSiguiente(img, nombreArchivo, index) {
         if (index < formatos.length) {
-            img.src = `${urlRepo}${nombreArchivo}.${formatos[index]}`;
+            // Se mantiene el prefijo "t" en los reintentos
+            img.src = `${urlRepo}t${nombreArchivo}.${formatos[index]}`;
             img.onerror = () => intentarSiguiente(img, nombreArchivo, index + 1);
         } else {
             img.src = `${urlRepo}tu-animalito.jpg`;
@@ -286,7 +288,7 @@
                 container.innerHTML += `
                     <div class="dato-card">
                         <span class="dato-num">${n}</span>
-                        <img src="${urlRepo}${n}.webp" 
+                        <img src="${urlRepo}t${n}.webp" 
                              alt="${animales[n]}" 
                              onerror="intentarSiguiente(this, '${n}', 1)">
                         <span class="dato-nombre">${animales[n]}</span>
