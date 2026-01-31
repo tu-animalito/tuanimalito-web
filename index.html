@@ -50,15 +50,14 @@
         body { margin: 0; font-family: 'Roboto', sans-serif; background-color: var(--dark-bg); color: #e6edf3; overflow-x: hidden; }
         .container { max-width: 600px; margin: auto; padding: 15px; }
 
-        /* CABECERA FIJA CON DISEÑO ORIGINAL */
+        /* CABECERA ESTÁTICA - SE QUEDA ARRIBA AL BAJAR */
         header { 
             text-align: center; 
             padding: 25px; 
             background: #000; 
             border-bottom: 3px solid var(--primary-gold); 
             margin-bottom: 20px; 
-            position: sticky; 
-            top: 0; 
+            position: relative; 
             z-index: 1000; 
         }
         .logo-main { width: 100%; max-width: 280px; height: auto; }
