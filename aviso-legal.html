@@ -2,15 +2,17 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aviso Legal | Tu-Animalito</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-gold: #d4af37;
+            --dark-bg: #0d0d0d;
+            --card-bg: #1a1a1a;
         }
-        body { font-family: 'Roboto', sans-serif; background: #0d0d0d; color: #f0f0f0; line-height: 1.6; margin: 0; padding: 0; }
+        body { font-family: 'Roboto', sans-serif; background: var(--dark-bg); color: #f0f0f0; line-height: 1.6; margin: 0; padding: 0; }
         
-        /* Cabecera integrada */
         header.site-header { 
             text-align: center; 
             padding: 25px; 
@@ -20,16 +22,26 @@
         }
         .logo-nav { width: 150px; }
 
-        .legal-container { max-width: 850px; margin: 20px auto; background: #1a1a1a; padding: 40px; border-radius: 15px; border: 1px solid var(--primary-gold); }
+        .legal-container { 
+            max-width: 850px; 
+            margin: 20px auto; 
+            background: var(--card-bg); 
+            padding: 40px; 
+            border-radius: 15px; 
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
         h1, h2 { font-family: 'Orbitron'; color: var(--primary-gold); border-bottom: 1px solid #333; padding-bottom: 10px; }
+        h1 { font-size: 1.8rem; text-align: center; margin-bottom: 30px; }
+        h2 { font-size: 1.2rem; margin-top: 30px; }
+        
         .highlight { color: var(--primary-gold); font-weight: bold; }
-        p { margin-bottom: 20px; text-align: justify; }
+        p { margin-bottom: 20px; text-align: justify; color: #cbd5e1; }
 
-        /* Botón Volver */
         .btn-back {
             display: block;
             width: fit-content;
-            margin: 30px auto;
+            margin: 40px auto 10px;
             background: var(--primary-gold);
             color: #000;
             padding: 12px 25px;
@@ -41,6 +53,11 @@
             text-align: center;
         }
         .btn-back:hover { transform: scale(1.05); background: #fff; }
+
+        @media (max-width: 600px) {
+            .legal-container { padding: 20px; margin: 10px; }
+            h1 { font-size: 1.4rem; }
+        }
     </style>
 </head>
 <body>
@@ -54,34 +71,35 @@
 
     <section>
         <h2>1. Naturaleza del Portal</h2>
-        <p>El portal <strong>Tu-Animalito.com.ve</strong> es una plataforma dedicada exclusivamente al <span class="highlight">entretenimiento, la recreación y la difusión de pronósticos</span> estadísticos basados en la tradición de los sorteos de animalitos. Este sitio NO es una casa de apuestas ni gestiona jugadas de azar de forma directa.</p>
+        <p>El portal <strong>Tu-Animalito.com.ve</strong> es una plataforma dedicada exclusivamente al <span class="highlight">análisis estadístico, la recreación y la difusión de pronósticos informativos</span> basados en la tradición de los sorteos de animalitos en Venezuela. Este sitio <strong>NO es una casa de apuestas</strong>, no gestiona jugadas de azar, ni procesa transacciones monetarias relacionadas con apuestas de forma directa o indirecta.</p>
     </section>
 
     <section>
-        <h2>2. Propiedad Intelectual (Mis Animalitos)</h2>
-        <p>Todas las ilustraciones, personajes y diseños gráficos presentes en este portal (tales como el <strong>Ratón Chef (08)</strong>, la <strong>Rana Cantante (06)</strong>, el <strong>Tigre de Circo (10)</strong> y el <strong>Delfín (0)</strong>, entre otros) son <span class="highlight">creaciones originales y propiedad intelectual exclusiva de Tu-Animalito</span>.</p>
-        <p>Dichas imágenes están alojadas en nuestro repositorio oficial de GitHub bajo firmas digitales que certifican su fecha de creación y autoría. Queda terminantemente prohibido el uso, copia, distribución o modificación de estos diseños en otros portales web, redes sociales o medios impresos sin autorización previa.</p>
+        <h2>2. Propiedad Intelectual y Derechos de Autor</h2>
+        <p>Todas las ilustraciones, personajes, logotipos y diseños gráficos presentes en este portal (incluyendo de forma enunciativa pero no limitativa al <strong>Ratón Chef (08)</strong>, la <strong>Rana Cantante (06)</strong>, el <strong>Tigre de Circo (10)</strong> y el <strong>Delfín (0)</strong>) son <span class="highlight">propiedad intelectual exclusiva de Tu-Animalito</span>.</p>
+        <p>Dichas obras están protegidas por las leyes internacionales de derechos de autor y se encuentran alojadas en repositorios oficiales que certifican su autoría mediante firmas digitales. Queda <strong>estrictamente prohibida</strong> la reproducción total o parcial, comunicación pública, distribución o transformación de estos diseños en otros sitios web, redes sociales, aplicaciones o medios físicos sin la autorización expresa y por escrito de los titulares de este portal.</p>
     </section>
 
     <section>
-        <h2>3. Suscripción Telegram VIP</h2>
-        <p>El servicio de <span class="highlight">Telegram VIP</span> es una suscripción de carácter informativo donde se comparten análisis premium y sugerencias basadas en tendencias. La suscripción no garantiza resultados económicos, ya que los sorteos son eventos aleatorios. El usuario acepta que el pago de la suscripción es por el servicio de análisis y no por un resultado garantizado.</p>
+        <h2>3. Responsabilidad sobre la Información</h2>
+        <p>Los <strong>datos de Ruleta Royal</strong>, Lotto Activo, La Granjita y otros sorteos publicados en este sitio son el resultado de proyecciones estadísticas y herramientas de análisis técnico. Tu-Animalito se esfuerza por mantener la información actualizada; sin embargo, no se hace responsable por errores tipográficos, fallos técnicos de terceros o cambios en los resultados oficiales de los sorteos.</p>
     </section>
 
     <section>
         <h2>4. Juego Responsable</h2>
-        <p>Promovemos el <strong>Juego Responsable</strong>. Los pronósticos compartidos deben ser tomados como una guía recreativa. Recordamos que los juegos de azar son para mayores de 18 años y deben practicarse con moderación. No nos hacemos responsables por pérdidas económicas derivadas del uso de la información publicada.</p>
+        <p>Desde este portal promovemos el <strong>Juego Responsable</strong>. Los pronósticos compartidos deben ser utilizados únicamente como una guía recreativa. Recordamos que la participación en juegos de azar está restringida a <strong>mayores de 18 años</strong> y debe practicarse con moderación. Bajo ninguna circunstancia Tu-Animalito será responsable por pérdidas económicas o daños derivados del uso de la información publicada en este sitio.</p>
     </section>
 
     <section>
-        <h2>5. Responsabilidad de Datos</h2>
-        <p>Aunque nos esforzamos por mantener los resultados y pronósticos actualizados diariamente, Tu-Animalito no se hace responsable por errores tipográficos o fallos técnicos externos que puedan alterar la información en tiempo real.</p>
+        <h2>5. Enlaces a Terceros</h2>
+        <p>Este sitio puede contener enlaces a canales informativos externos o redes sociales. Tu-Animalito no controla ni se hace responsable del contenido o las prácticas de privacidad de dichos sitios ajenos a nuestra infraestructura.</p>
     </section>
 
     <a href="/" class="btn-back">🏰 VOLVER AL INICIO 🏰</a>
 
     <p style="text-align: center; font-size: 0.8rem; margin-top: 40px; color: #666;">
-        Última actualización: Enero 2026. Todos los derechos reservados.
+        Última actualización: Enero 2026. <br>
+        Tu-Animalito.com.ve &copy; Todos los derechos reservados.
     </p>
 </div>
 
