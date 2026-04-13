@@ -212,7 +212,7 @@
 
     <div class="news-ticker-wrapper">
         <div class="ticker-content">
-            <div class="ticker-item"><span>LOTTO ACTIVO:</span> Análisis de datos actualizado para este Sábado</div>
+SÁBADO            <div class="ticker-item"><span>LOTTO ACTIVO:</span> Análisis de datos actualizado para el Lunes</div>
             <div class="ticker-item"><span>LA GRANJITA:</span> Revisa las tendencias actualizadas</div>
             <div class="ticker-item"><span>SÍGUENOS:</span> Únete a nuestra comunidad en Telegram</div>
             <div class="ticker-item"><span>RULETA ROYAL:</span> Nuevas tendencias disponibles</div>
@@ -311,9 +311,9 @@
     }
 
     const CONFIG_EXPLOSIVOS = [
-        { loteria: "LA GRANJITA", num: "03" },
-        { loteria: "LOTTO ACTIVO", num: "01", fijo: true },
-        { loteria: "RULETA ROYAL", num: "09" }
+        { loteria: "LA GRANJITA", num: "08" },
+        { loteria: "LOTTO ACTIVO", num: "08", fijo: true },
+        { loteria: "RULETA ROYAL", num: "03" }
     ];
 
     function reducirCruz(n) {
@@ -330,7 +330,7 @@
         const aStr = String(hoy.getFullYear());
         
         document.getElementById('fecha-txt').innerText = hoy.toLocaleDateString();
-        document.getElementById('sorteo-txt').innerText = `🎯 Análisis sugerido para: Lotto Activo / La Granjita / Selva Plus | HOY: ${dStr}/${mStr}/${aStr}`;
+        document.getElementById('sorteo-txt').innerText = `🎯 Análisis sugerido para: Lotto Activo / La Granjita / Ruleta Royal | HOY: ${dStr}/${mStr}/${aStr}`;
 
         let pir = [dStr + mStr + aStr];
         while(pir[pir.length-1].length > 1) {
